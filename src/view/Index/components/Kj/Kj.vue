@@ -1,0 +1,158 @@
+<template lang="html">
+	<section class="kaijiang" id="kj">
+		<h3>最新开奖</h3>
+		<div id="kj-wrap">
+			<ul class="ui-tab-nav">
+				<li class="current">大乐透</li>
+				<li>胜负彩</li>
+				<li>七星彩</li>
+				<li>排列三</li>
+				<li>排列五</li>
+			</ul>
+			<ul class="ui-tab-content" id="kjCon">
+				<li>
+					<div class="loading">
+						加载中...
+					</div>
+				</li>
+
+			</ul >
+		</div>
+		<div class="kaijiang-foot">
+			<span class="icon-pointerleft"></span>
+			<span>左右滑动查看其它彩种</span>
+			<span class="icon-pointerright"></span>
+		</div>
+	</section>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="css">
+.kaijiang{
+	background-color: #fff;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	border-bottom: 1px solid #f4f4f4;
+	font-size: 1.4rem;
+}
+.kaijiang h3{
+	/*box-sizing: border-box;*/
+	font-size: 1.6rem;
+	font-weight: 400;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	border-top: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
+}
+.kaijiang .ui-tab-nav{
+	position: absolute;
+	width: 78%;
+	top: 0;
+	right: 0;
+}
+@media(max-width: 340px) {
+	.kaijiang .ui-tab-nav{
+		width: 76%;
+	}
+}
+.head_text{
+	font-size: 1.4rem;
+}
+.kaijiang .ui-tab-nav li{
+	position: relative;
+	font-size: 1.4rem;
+	border-bottom: none;
+	color: #999;
+	background-color: #eee;
+	border-top: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
+}
+.kaijiang .ui-tab-nav .current{
+	background-color: #f32f0c;
+	color: #fff;
+	border: 1px solid #f32f0c;
+}
+.kaijiang .ui-tab-nav .current:before{
+	content: '';
+	position: absolute;
+	height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: #f32f0c transparent transparent transparent;
+    border-width: 7px;
+    z-index: 999;
+    bottom: -14px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+}
+.kaijiang .ui-tab-nav li:first-child{
+	border-left: 1px solid #f4f4f4;
+}
+.kaijiang .ui-tab-content{
+	padding: 10px 0 0 0;
+}
+.kaijiang .ui-tab-content>li {
+	padding: 0 10px;
+}
+.kj-text .red{
+	margin-right: 10px;
+}
+
+.ui-tab-content ol{
+	height: 36px;
+	margin: 10px 0;
+}
+.ui-tab-content ol li{
+	height: 36px;
+	width: 36px;
+	border-radius: 50%;
+	background-color: #f32f0c;
+	color: #fff;
+	text-align: center;
+	line-height: 36px;
+	float: left;
+	margin-right: 5px;
+}
+.ui-tab-content .kj-sfc li{
+	background-color: #33cc5c;
+    margin-right: 2px;
+    width: 18px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 1.4rem;
+	border-radius: 0;
+}
+.ui-tab-content ol .blue{
+	background-color: #31cefb;
+}
+.a-btn{
+	line-height: 20px;
+	position: relative;
+	height: 20px;
+}
+.a-btn a{
+	position: absolute;
+	line-height: 20px;
+	top: 0;
+}
+.a-btn a:first-child{
+	right: 40px;
+}
+.a-btn a:last-child{
+	right: 0px;
+}
+.kaijiang-foot {
+	text-align: center;
+	color: #999;
+	padding: 10px 0;
+}
+</style>

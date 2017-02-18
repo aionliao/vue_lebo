@@ -1,0 +1,107 @@
+/* 投注选项 */
+.caiz-list {
+	background: #fff;
+	text-align: center;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border-top: 1px solid #f4f4f4;
+}
+
+.gameNo-more .caiz-list{
+	border-top:  none;
+}
+.caiz-list ul {
+	overflow: hidden;
+}
+.caiz-list li {
+	position: relative;
+	display: block;
+	float: left;
+	height: 95px;
+	text-align: center;
+	border-right: 1px solid #f4f4f4;
+	width: 33%;
+	border-bottom: 1px solid #f4f4f4;
+}
+.caiz-list li:nth-child(3n){
+	border-right: none;
+}
+.caiz-list a{
+	display: block;
+	padding: 10px 0;
+}
+.caiz-list a:link, .caiz-list a:hover, 
+.caiz-list a:active, .caiz-list a:visited {
+	color: #000;
+}
+.caiz-list i {
+	text-align: center;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+.caiz-list img{
+	width: 100%;
+}
+.caiz-list .caiz-name {
+	display: block;
+	font-size: 1.5rem;
+	color: #333;
+	margin-top: 6px;
+}
+.no-sale, .award, .add-award, .cai-activity{
+	position: relative;
+}
+.caiz-list .award .caiz-name, 
+.caiz-list .add-award .caiz-name, 
+.caiz-list .cai-activity .caiz-name {
+	color: #f32f0c;
+}
+
+.no-sale a:after,.award a:after, .add-award a:after, .cai-activity a:after{
+	// position: absolute;
+	// content: '';
+	// right: 0;
+	// top: -1px;
+	// width: 30px;
+	// height: 30px;
+	// background-size: 30px auto;
+	position: absolute;
+    
+    color: #ffeb46;
+    line-height: 28px;
+    font-size: 1.2rem;
+    left: 50%;
+    -webit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 38px;
+    width: 78px;
+    height: 22px;
+    background-size: 78px auto;
+}
+.award a:after{
+	content: '今日开奖';
+}
+.add-award a:after{
+	content: '嘉奖';
+}
+.cai-activity a:after{
+	content: '活动';
+}
+.no-sale a:after{
+	content: '暂停售彩';
+	color: #fff;
+}
+.no-sale a:after{
+	background-image: url(/assets/img/cai-list-control/no-sale.png);
+}
+.award a:after{
+	background-image: url(/assets/img/cai-list-control/award.png);
+}
+.add-award a:after{
+	background-image: url(/assets/img/cai-list-control/award.png);
+}
+.cai-activity a:after{
+	background-image: url(/assets/img/cai-list-control/award.png);
+}

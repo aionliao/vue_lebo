@@ -1,0 +1,105 @@
+<template lang="html">
+	<nav id="nav">
+		<ul>
+			<li>
+				<router-link to="/login">
+					<div class="img">
+						<img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-self.jpg">
+					</div>
+					<span id="goUserHtml">登录</span>
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/user/singin">
+					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-sign.jpg"></div>
+					<span>签到</span>
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/kj">
+					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-award.jpg"></div>
+					<span>开奖</span>
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/other/info">
+					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-info.png"></div>
+					<span>资讯</span>
+				</router-link>
+			</li>
+			<li>
+				<router-link to="/activity">
+					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-activity.png"></div>
+					<span>活动</span>
+				</router-link>
+			</li>
+		</ul>
+	</nav>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="css">
+nav{
+	border-top: 1px solid #f4f4f4;
+    background: #fff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f4f4f4;
+    height: 85px;
+}
+nav.nav-fixed{
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
+}
+nav ul{
+	width: 100%;
+	height: 85px;
+}
+nav img{width: 100%;vertical-align: bottom;}
+nav li {
+	box-sizing: border-box;
+	border-right: 1px solid #f4f4f4;
+	width: 20%;
+	float: left;
+	text-align: center;
+	position: relative;
+	height: 85px;
+}
+nav li a {
+	display: block;
+	box-sizing: border-box;
+	padding-top: 15px;
+	position: relative;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+nav li a:link, nav li a:hover, nav li a:active, nav li a:visited {
+	color: #fff;
+}
+nav li a:link span,  nav li a:hover span,  nav li a:active span,  nav li a:visited span {
+	color: #000;
+}
+nav .img{
+	width: 30px;
+	margin: 0 auto 0;
+	position: relative;
+}
+nav span{
+	position: absolute;
+	font-size: 1.5rem;
+	color: #333;
+	width: 100%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	top: 53px;
+}
+</style>

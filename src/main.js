@@ -3,7 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueLazyload from 'vue-lazyload'
 
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: './static/img/icon/icon-cai/jczq.png',
+  loading: './static/img/loading.gif',
+  attempt: 1
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
