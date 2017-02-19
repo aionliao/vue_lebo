@@ -32,6 +32,14 @@ import vueAjax from '../../../../tools/vueAjax.js';
 import formatTime from '../../../../tools/formatTime.js';
 import unitConfig from '../../../../config/unitConfig.js';
 
+function dealSp(spStr) {
+    let spArr =  spStr.split('@');
+    let realTimeSpArr = [];
+    for (let i = 0, len = spArr.length; i < len; i++) {
+        realTimeSpArr.push(spArr.split('_')[1]);
+    }
+    return realTimeSpArr;
+}
 export default {
     data () {
         return {
@@ -40,6 +48,7 @@ export default {
             matchSellOutTime: '',
             fast1CZSData: {},
             awardMoney: '',
+            realTimeSp: [],
             unitConfig: unitConfig
         };
     },
@@ -65,91 +74,31 @@ export default {
         });
     },
     computed: {
+        realTimeSpArr () {
+            // 3_5.80@1_4.30@0_1.38
+            return dealSp(this.fast1CZSData.realTimeSp);
+        },
+        realTimeMinSpMax () {
+            let realTimeMinSpArr = dealSp(this.fast1CZSData.realTimeMinSp);
+            realTimeMinSpArr.sort(function (a, b){
+                return a - b;
+            });
+            return realTimeMinSpArr[0];
+        },
         awardMoney () {
-            var spArrOut = temObj.realTimeSp.split('@');
-            var spArrMin = (function () {
-                var spArrCopy = [];
-                for (var i = 0; i < spArrOut.length; i++) {
-                    spArrCopy[i] = spArrOut[i];
-                }
-                spArrCopy.sort(function (a, b) {
-                    return a.split('_')[1] - b.split('_')[1];
-                });
-                return spArrCopy[0];
-            }());
-            console.log('spArrOut');
-            console.log(spArrOut);
-            console.log('spArrMin');
-            console.log(spArrMin);
-            var minIndex = spArrOut.indexOf(spArrMin);
-            temObj.matchSellOutTime = formatTime('ymdhm', temObj.matchSellOutTime);
-            temObj.dataTime = formatTime('ymdhms', temObj.matchSellOutTime);
-            temObj.matchAgainstSpInfoList = _this.formatSPFInfoList(temObj.realTimeSp);
-            temObj.gameId = temObj.issueNo + temObj.week + temObj.matchSort;
-            temObj.unit = configure.unit;
 
-            dealMinSpDataObj = (function (temObj) {
-            	var gameId = temObj.issueNoMinSp + temObj.weekMinSp + temObj.matchSortMinSp;
-                var letScore = temObj.letScoreMinSp;
-
-                var endTimeAll = formatTime('ymdhms', temObj.matchSellOutTimeMinSp);
-
-                /**
-                 *  letScore: -1, sp 值为3_spf @ 0_rqspf
-                 *  letScore: 1, sp 值为0_spf @ 3_rqspf
-                 *
-                 *  胜平负:108011001
-                 *  让球胜平负: 108061001
-                 *
-                 *  示例 '201610123002@108011001@1_3.15,0_3.50@2016-10-12 21:50:00$-1'
-                 */
-
-                // 查询和处理 sp 值
-
-
-
-                var spArr = temObj.realTimeSpMinSp.split('@');
-                var spArrZero = spArr[0];
-                var spArrFirst = spArr[1];
-                var codeContent = '';
-
-                codeContent = gameId + '@108011001@' + spArrZero + '|108061001@'  + spArrFirst + '@' + endTimeAll + '$' + letScore;
-                spArr.sort(function (a, b) {
-                    return a.split('_')[1] - b.split('_')[1];
-                });
-
-                return {
-                	codeContent: codeContent,
-                	spMax: spArr[1].split('_')[1]
-                }
-            }(temObj));
-
-            temObj.codeContent = dealMinSpDataObj.codeContent;
-            temObj.spMax = dealMinSpDataObj.spMax;
-            temObj.spArrMin = spArrMin.split('_')[1];
-
-            var temHTML = templateData.temGuessDom;
-            var insertHTML = $.tpl(temHTML, temObj);
-
-            console.log('minIndex');
-            console.log(minIndex);
-            $('#li_01').empty().html(insertHTML).find('li').eq(minIndex || 0).addClass('current');
-            temHTML = '';
-            insertHTML = '';
         },
         getMatchAgainstSpInfoList () {
-            // 3_5.80@1_4.30@0_1.38
             let matchList = this.fast1CZSData;
-            let spArr = matchList.realTimeSp.split('@');
             let spfArr = [];
             let teamNameArr = [
                 matchList.homeTeamName,
                 '平局',
                 matchList.guestTeamName
             ];
-            for (let i = 0, len = spArr.length; i < len; i++) {
+            for (let i = 0, len = teamNameArr.length; i < len; i++) {
                 spfArr.push({
-                    sp: spArr[i].split('_')[1],
+                    sp: this.realTimeSpArr[i],
                     teamName: teamNameArr[i]
                 });
             }
