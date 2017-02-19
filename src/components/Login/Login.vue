@@ -3,7 +3,7 @@
 		<header>
 			<router-link to="/" class="icon-zuo"></router-link>
 			<h2>登录</h2>
-			<router-link to="/" class="home"><img src="../../assets/img/home.png"></router-link>
+			<router-link to="/" class="home"><img v-lazy="imgUrl"></router-link>
 		</header>
 		<section class=action_con>
 			<form action="" method=post>
@@ -29,6 +29,11 @@
 
 <script>
 export default {
+	data () {
+		return {
+			imgUrl: './assets/img/home.png'
+		}
+	}
 }
 </script>
 

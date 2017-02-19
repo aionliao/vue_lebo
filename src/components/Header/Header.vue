@@ -1,6 +1,6 @@
 <template>
 	<header class="header">
-        <img class="logo lazy-load" data-src="../../assets/img/logo.jpg" src="../../assets/img/lazy-head.jpg">
+        <img class="logo lazy-load" v-lazy="imgUrl">
         <router-link to="/download">
             <span class="head_text">下载客户端</span>
             <span class="icon-down"></span>
@@ -9,7 +9,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+	data () {
+		return {
+			imgUrl: './static/img/logo.jpg'
+		}
+	}
+}
 </script>
 
 <style scoped>

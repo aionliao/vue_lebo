@@ -1,0 +1,12 @@
+{
+	"gameList": [{
+		"startTime": 1.4874186E12,
+		"endTime": 1.4875914E12,
+		"issue": "17019",
+		"gameNo": "TC_DLT",
+		"issueStatus": "1",
+		"timeStep": "109916092"
+	}],
+	"resCode": "0",
+	"resMsg": "操作成功"
+}

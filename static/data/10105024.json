@@ -1,0 +1,115 @@
+{
+	"resCode": "0",
+	"list": [{
+		"gameNo": "TC_DLT",
+		"gameName": "大乐透",
+		"issueNo": "17018",
+		"awardDate": "2017-02-20 19:50:00",
+		"countrySaleMoney": "200000000",
+		"rollAwardPoolMoney": "3418000000",
+		"countdown": "110039977",
+		"winCode": "06,07,10,17,23 01,09",
+		"awardLevelOne": "一等：2注 每注：10000000元",
+		"awardLevelTwo": "二等：52注 每注：173164元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0,
+		"prizeNum": "684"
+	}, {
+		"gameNo": "TC_PL3",
+		"gameName": "排列三",
+		"issueNo": "17042",
+		"awardDate": "2017-02-19 19:50:00",
+		"countrySaleMoney": "16585366",
+		"rollAwardPoolMoney": "",
+		"countdown": "23639959",
+		"winCode": "1,4,9",
+		"awardLevelOne": "直选：10029注 每注：1040元",
+		"awardLevelTwo": "组六：12577注 每注：173元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_PL5",
+		"gameName": "排列五",
+		"issueNo": "17042",
+		"awardDate": "2017-02-19 19:50:00",
+		"countrySaleMoney": "9464420",
+		"rollAwardPoolMoney": "",
+		"countdown": "23639936",
+		"winCode": "1,4,9,9,2",
+		"awardLevelOne": "直选：36注 每注：100000元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_QXC",
+		"gameName": "七星彩",
+		"issueNo": "17018",
+		"awardDate": "2017-02-19 19:50:00",
+		"countrySaleMoney": "16701100",
+		"rollAwardPoolMoney": "13402965",
+		"countdown": "23639919",
+		"winCode": "4,2,4,5,6,2,7",
+		"awardLevelOne": "一等：0注 每注：0元",
+		"awardLevelTwo": "二等：10注 每注：40447元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_SF14",
+		"gameName": "胜负彩",
+		"issueNo": "2017022",
+		"awardDate": "2017-02-18 21:56",
+		"countrySaleMoney": "25882886",
+		"rollAwardPoolMoney": "0",
+		"countdown": "29339897",
+		"winCode": "3,0,0,1,3,1,3,0,3,0,3,3,1,0",
+		"awardLevelOne": "胜负彩一等：97注 每注：119541元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_SF9",
+		"gameName": "任九",
+		"issueNo": "2017022",
+		"awardDate": "2017-02-18 21:56",
+		"countrySaleMoney": "25882886",
+		"rollAwardPoolMoney": "0",
+		"countdown": "",
+		"winCode": "3,0,0,1,3,1,3,0,3,0,3,3,1,0",
+		"awardLevelOne": "",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_JQ4",
+		"gameName": "4场进球",
+		"issueNo": "2017022",
+		"awardDate": "2017-02-18 10:35",
+		"countrySaleMoney": "681174",
+		"rollAwardPoolMoney": "0",
+		"countdown": "207539850",
+		"winCode": "3,0,0,2,0,2,1,1",
+		"awardLevelOne": "一等：2注 每注：217975元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_BQ6",
+		"gameName": "6场半全场",
+		"issueNo": "2017022",
+		"awardDate": "2017-02-18 21:56",
+		"countrySaleMoney": "118555",
+		"rollAwardPoolMoney": "0",
+		"countdown": "207539816",
+		"winCode": "3,3,0,0,0,0,3,1,1,3,1,1",
+		"awardLevelOne": "一等：0注 每注：0元",
+		"totalPlaceNum": 0,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_JCLQ",
+		"gameName": "竞彩篮球",
+		"totalPlaceNum": 1,
+		"awardPlaceNum": 0
+	}, {
+		"gameNo": "TC_JCZQ",
+		"gameName": "竞彩足球",
+		"totalPlaceNum": 52,
+		"awardPlaceNum": 0
+	}],
+	"resMsg": "操作成功"
+}

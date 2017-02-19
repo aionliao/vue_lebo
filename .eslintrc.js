@@ -20,6 +20,7 @@ module.exports = {
     // allow paren-less arrow functions
     // 'arrow-parens': 0,
     'indent': ['off', 'tab'],
+    'semi': [2, 'always'],
     'no-tabs': 'off',
     // allow async-await
     // 'generator-star-spacing': 0,

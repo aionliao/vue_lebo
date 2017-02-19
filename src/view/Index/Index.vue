@@ -10,7 +10,7 @@
         <!-- 娱乐场 -->
         <section class="disport" id="disport">
             <router-link to="/disport">
-                <img class="disport-left lazy-load" data-src="../../assets/img/disport.png" src="../../assets/img/lazy-head.jpg">
+                <img class="disport-left lazy-load" v-lazy="imgUrl">
             </router-link>
         </section>
         <!-- 红包 -->
@@ -51,7 +51,8 @@ export default {
   },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      imgUrl: './static/img/disport.png'
     }
   }
 }

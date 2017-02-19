@@ -1,36 +1,12 @@
 <template lang="html">
 	<nav id="nav">
 		<ul>
-			<li>
-				<router-link to="/login">
+			<li v-for="nav in navs">
+				<router-link :to="nav.linkUrl">
 					<div class="img">
-						<img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-self.jpg">
+						<img v-lazy="nav.imgUrl">
 					</div>
-					<span id="goUserHtml">登录</span>
-				</router-link>
-			</li>
-			<li>
-				<router-link to="/user/singin">
-					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-sign.jpg"></div>
-					<span>签到</span>
-				</router-link>
-			</li>
-			<li>
-				<router-link to="/kj">
-					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-award.jpg"></div>
-					<span>开奖</span>
-				</router-link>
-			</li>
-			<li>
-				<router-link to="/other/info">
-					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-info.png"></div>
-					<span>资讯</span>
-				</router-link>
-			</li>
-			<li>
-				<router-link to="/activity">
-					<div class="img"><img src="../../../../assets/img/lazy-icon.jpg" data-src="../../../../assets/img/icon/icon-nav/icon-activity.png"></div>
-					<span>活动</span>
+					<span>{{nav.insertHtml}}</span>
 				</router-link>
 			</li>
 		</ul>
@@ -39,6 +15,37 @@
 
 <script>
 export default {
+	data () {
+		return {
+			navs: [
+				{
+					linkUrl: '/login',
+					imgUrl: './static/img/icon/icon-nav/icon-self.jpg',
+					insertHtml: '登录'
+				},
+				{
+					linkUrl: '/user/sign',
+					imgUrl: './static/img/icon/icon-nav/icon-sign.jpg',
+					insertHtml: '签到'
+				},
+				{
+					linkUrl: '/kj',
+					imgUrl: './static/img/icon/icon-nav/icon-award.jpg',
+					insertHtml: '开奖'
+				},
+				{
+					linkUrl: '/other/info',
+					imgUrl: './static/img/icon/icon-nav/icon-info.png',
+					insertHtml: '资讯'
+				},
+				{
+					linkUrl: '/activity',
+					imgUrl: './static/img/icon/icon-nav/icon-activity.png',
+					insertHtml: '活动'
+				}
+			]
+		}
+	}
 }
 </script>
 
