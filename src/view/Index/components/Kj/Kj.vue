@@ -37,6 +37,9 @@
 
 <script>
 import vueAjax from '../../../../public/vueAjax.js';
+import dealResCode from '../../../../public/dealResCode.js';
+import dealKjAjaxData from './dealKjAjaxData.js';
+
 export default {
 	data () {
 		return {
@@ -57,10 +60,10 @@ export default {
             that: this
         }).then((response) => {
             let data = response.body;
-			let resCode = data.resCode;
+			let resCode = dealResCode(data.resCode);
 
 			if (resCode === '0') {
-				this.kjDatas = data.list;
+				this.kjDatas = dealKjAjaxData(data.list);
 				this.statusConfig.loaded = true;
 			} else {
 				this.statusConfig.loaded = false;
