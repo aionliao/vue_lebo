@@ -1,3 +1,3 @@
 export default (resCode) => {
-	return typeof resCode === 'string' ? resCode : resCode += '';
+	return typeof resCode === 'string' ? resCode : (resCode + '');
 };
