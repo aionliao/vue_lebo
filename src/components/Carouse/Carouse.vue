@@ -11,9 +11,9 @@ export default {
 	data () {
 		return {
 			imgUrl: './static/img/lazy-head.jpg'
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="css">

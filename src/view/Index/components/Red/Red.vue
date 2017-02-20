@@ -37,9 +37,9 @@ export default {
 					className: ''
 				}
 			]
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="css">

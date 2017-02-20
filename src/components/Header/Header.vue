@@ -13,9 +13,9 @@ export default {
 	data () {
 		return {
 			imgUrl: './static/img/logo.jpg'
-		}
+		};
 	}
-}
+};
 </script>
 
 <style scoped>

@@ -71,9 +71,9 @@ export default {
 					caiName: '更多彩种'
 				}
 			]
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="less">

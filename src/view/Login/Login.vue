@@ -32,9 +32,9 @@ export default {
 	data () {
 		return {
 			imgUrl: './static/img/home.png'
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="less">

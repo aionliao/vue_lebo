@@ -44,9 +44,9 @@ export default {
 					insertHtml: '活动'
 				}
 			]
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="css">

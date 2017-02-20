@@ -11,9 +11,9 @@ export default {
 	data () {
 		return {
 			imgUrl: './assets/img/icon/news.png'
-		}
+		};
 	}
-}
+};
 </script>
 
 <style lang="css">

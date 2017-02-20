@@ -10,12 +10,21 @@
 				<li>排列五</li>
 			</ul>
 			<ul class="ui-tab-content" id="kjCon">
-				<li>
-					<div class="loading">
-						加载中...
-					</div>
-				</li>
 
+				<li v-if="statusConfig.loaded" v-for="kjData in kjDatas">
+						<!-- kj-sfc -->
+						<p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
+						<ol>
+							<li v-for=""></li>
+						</ol>
+						<p class="a-btn">
+							<router-link :to="detailLink">详情</router-link>
+							<router-link :to="tzLink">投注</router-link>
+						</p>
+				</li>
+				<li v-else>
+					<div class="loading">{{statusConfig.msg}}</div>
+				</li>
 			</ul >
 		</div>
 		<div class="kaijiang-foot">
@@ -27,8 +36,45 @@
 </template>
 
 <script>
+import vueAjax from '../../../../public/vueAjax.js';
 export default {
-}
+	data () {
+		return {
+			statusConfig: {
+                loaded: false,
+                msg: '加载中...'
+            },
+			kjDatas: {}
+		};
+	},
+	created () {
+		vueAjax({
+            method: 'get',
+            data: {
+                'gameNo': 'TC_DLT',
+                'transactionType': '10105024'
+            },
+            that: this
+        }).then((response) => {
+            let data = response.body;
+			let resCode = data.resCode;
+
+			if (resCode === '0') {
+				this.kjDatas = data.list;
+				this.statusConfig.loaded = true;
+			} else {
+				this.statusConfig.loaded = false;
+				this.statusConfig.msg = data.resMsg;
+			}
+        }, (response) => {
+			this.statusConfig.loaded = false;
+            this.statusConfig.msg = '服务器迷路了';
+        });
+	},
+	computed () {
+
+	}
+};
 </script>
 
 <style lang="css">
