@@ -1,7 +1,19 @@
 <template>
     <div>
         <Header></Header>
-        <Carouse></Carouse>
+
+        <Carouse v-if="statusConfig.carouseLoaded">
+            <CarouseItem v-for="carouse in carouseData">
+                <a :href="carouse.webUrl">
+                    <img :src="carouse.turnImgUrl" />
+                </a>
+            </CarouseItem>
+        </Carouse>
+        <div class="ui-slider" v-else>
+            <ul class="ui-slider-content">
+                <li><img :src="'/static/img/lazy-head.jpg'"></li>
+            </ul>
+        </div>
         <SubNav></SubNav>
         <Notice></Notice>
         <div class="user nologin" id="user"></div>
@@ -10,7 +22,7 @@
         <!-- 娱乐场 -->
         <section class="disport" id="disport">
             <router-link to="/disport">
-                <img class="disport-left lazy-load" v-lazy="imgUrl">
+                <img class="disport-left lazy-load" v-lazy="disportImgUrl">
             </router-link>
         </section>
         <!-- 红包 -->
@@ -27,8 +39,12 @@
 <script type="text/ecmascript6">
 import Header from '../../components/Header/Header.vue';
 import Carouse from '../../components/Carouse/Carouse.vue';
+import CarouseItem from '../../components/Carouse/Carouse-item.vue';
 import CaiList from '../../components/CaiList/CaiList.vue';
 import Footer from '../../components/Footer/Footer.vue';
+
+import vueAjax from '../../public/vueAjax.js';
+import dealResCode from '../../public/dealResCode.js';
 
 import SubNav from './components/SubNav/SubNav.vue';
 import Notice from './components/Notice/Notice.vue';
@@ -37,24 +53,49 @@ import FastTz from './components/FastTz/FastTz.vue';
 import Kj from './components/Kj/Kj.vue';
 
 export default {
-  name: 'hello',
-  components: {
-      Header,
-      Carouse,
-      SubNav,
-      Notice,
-      CaiList,
-      Red,
-      FastTz,
-      Kj,
-      Footer
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-      imgUrl: './static/img/disport.png'
+    name: 'hello',
+    components: {
+        Header,
+        Carouse,
+        CarouseItem,
+        SubNav,
+        Notice,
+        CaiList,
+        Red,
+        FastTz,
+        Kj,
+        Footer
+    },
+    data () {
+        return {
+            statusConfig: {
+                carouseLoaded: false
+            },
+            carouseData: [],
+            disportImgUrl: '/static/img/disport.png'
+        }
+    },
+    created () {
+        vueAjax({
+            method: 'get',
+            data: {
+                transactionType: '10108101',
+                timeId: '0',
+                isNewUser: 'n',
+                fromType: '1'
+            },
+            that: this
+        }).then((response) => {
+            let data = response.body;
+            let resCode = dealResCode(data.resCode);
+
+            if (resCode === '0') {
+                this.statusConfig.carouseLoaded = true;
+                this.carouseData = data.list;
+            }
+            console.log(response);
+        }, (response) => {});
     }
-  }
 }
 </script>
 

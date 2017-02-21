@@ -32,9 +32,9 @@
 
 <script>
 import vueAjax from '../../../../public/vueAjax.js';
-import formatTime from '../../../../tools/formatTime.js';
-import isEmptyObject from '../../../../tools/isEmptyObject.js';
-import deepCopy from '../../../../tools/deepCopy.js';
+import formatTime from '../../../../utils/formatTime.js';
+import isEmptyObject from '../../../../utils/isEmptyObject.js';
+import deepCopy from '../../../../utils/deepCopy.js';
 import unitConfig from '../../../../config/unitConfig.js';
 
 function dealSp (spStr) {
