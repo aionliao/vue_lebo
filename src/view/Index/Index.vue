@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Header></Header>
+        <Headers></Headers>
 
         <Carouse v-if="statusConfig.carouseLoaded">
-            <CarouseItem v-for="carouse in carouseData">
+            <CarouseItem v-for="carouse in carouseData" slot="body">
                 <a :href="carouse.webUrl">
                     <img :src="carouse.turnImgUrl" />
                 </a>
@@ -32,16 +32,16 @@
         <FastTz></FastTz>
         <!--开奖 start-->
         <Kj></Kj>
-        <Footer></Footer>
+        <Footers></Footers>
     </div>
 </template>
 
 <script type="text/ecmascript6">
-import Header from '../../components/Header/Header.vue';
+import Headers from '../../components/Headers/Headers.vue';
 import Carouse from '../../components/Carouse/Carouse.vue';
 import CarouseItem from '../../components/Carouse/Carouse-item.vue';
 import CaiList from '../../components/CaiList/CaiList.vue';
-import Footer from '../../components/Footer/Footer.vue';
+import Footers from '../../components/Footers/Footers.vue';
 
 import vueAjax from '../../public/vueAjax.js';
 import dealResCode from '../../public/dealResCode.js';
@@ -55,7 +55,7 @@ import Kj from './components/Kj/Kj.vue';
 export default {
     name: 'hello',
     components: {
-        Header,
+        Headers,
         Carouse,
         CarouseItem,
         SubNav,
@@ -64,7 +64,7 @@ export default {
         Red,
         FastTz,
         Kj,
-        Footer
+        Footers
     },
     data () {
         return {

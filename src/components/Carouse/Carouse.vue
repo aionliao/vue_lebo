@@ -3,14 +3,16 @@
 		<!-- <button :class="arrowClasses" class="left" @click="arrowEvent(-1)"></button> -->
         <div>
         	<ul class="ui-slider-content" :class="[prefixCls + '-track']" :style="trackStyles" ref="slides">
-				<slot></slot>
+				<slot name="body"></slot>
         	</ul>
         </div>
 		<!-- <button :class="arrowClasses" class="right" @click="arrowEvent(1)"></button> -->
 		<ul :class="dotsClasses" class="ui-slider-indicators">
 			<template v-for="n in slides.length">
-				<li :class="{'current': n === currentIndex}" @click="dotsEvent('click'), n" @mouseover="dotsEvent('hover', n)"></li>
-				<button></button>
+				<!-- <li>{{n}}{{myCurrentIndex}}{{trackStyles}}</li> -->
+				<li :class="(n - 1) === myCurrentIndex ? 'current' : ''" @click="dotsEvent('click', n)" @mouseover="dotsEvent('hover', n)">
+					<slot name="index"></slot>
+				</li>
 			</template>
 		</ul>
     </div>
@@ -33,7 +35,7 @@ export default {
 		},
 		autoplay: {
 			type: Boolean,
-			default: false
+			default: true
 		},
 		autoplaySpeed: {
 			type: Number,
@@ -78,7 +80,8 @@ export default {
 			slides: [],
 			sliderInstances: [],
 			timer: null,
-			ready: false
+			ready: false,
+			myCurrentIndex: this.currentIndex
 		};
 	},
 	computed: {
@@ -89,8 +92,9 @@ export default {
 		},
 		trackStyles () {
 			return {
+				transform: `translate3d(-${this.trackOffset}px, 0, 0)`,
+				// transform: `translate3d(-0)px`,
 				width: `${this.trackWidth}px`,
-				transform: `translate3d(-${this.trackOffset})px`,
 				transition: `transform 500ms ${this.easing}`
 			};
 		},
@@ -186,21 +190,23 @@ export default {
 			this.updateOffset();
 		},
 		add (offset) {
-			let index = this.currentIndex;
+			let index = this.myCurrentIndex;
 			index += offset;
 			while (index < 0) {
 				index += this.slides.length;
 			}
 			index = index % this.slides.length;
-			this.currentIndex = index;
+			this.myCurrentIndex = index;
+			// console.log('this.myCurrentIndex');
+			// console.log(this.myCurrentIndex);
 		},
 		arrowEvent (offset) {
 			this.setAutoplay();
 			this.add(offset);
 		},
 		dotsEvent (event, n) {
-			if (event === this.trigger && this.currentIndex !== n) {
-				this.currentIndex = n;
+			if (event === this.trigger && this.myCurrentIndex !== n) {
+				this.myCurrentIndex = n;
 				this.setAutoplay();
 			}
 		},
@@ -214,7 +220,7 @@ export default {
 		},
 		updateOffset () {
 			this.$nextTick(() => {
-				this.trackOffset = this.currentIndex * this.listWidth;
+				this.trackOffset = this.myCurrentIndex * this.listWidth;
 			});
 		}
 	},
@@ -225,7 +231,7 @@ export default {
 		autoplaySpeed () {
 			this.setAutoplay();
 		},
-		currentIndex (val, oldVal) {
+		myCurrentIndex (val, oldVal) {
 			this.$emit('on-change', oldVal, val);
 			this.updateOffset();
 		},
@@ -234,8 +240,8 @@ export default {
 		}
 	},
 	mounted () {
-		console.log('created');
-		console.log(this.$children);
+		// console.log('created');
+		// console.log(this.$children);
 		this.updateSlides(true);
 		this.handleResize();
 		this.setAutoplay();
