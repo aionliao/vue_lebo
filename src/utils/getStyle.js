@@ -16,11 +16,8 @@ export default (element, styleName) => {
 	}
 	try {
 		const computed = document.defaultView.getComputedStyle(element, '');
-        console.log('输出宽度');
-        console.log(element.style[styleName] || computed ? computed[styleName] : null);
 		return element.style[styleName] || computed ? computed[styleName] : null;
 	} catch (e) {
-        console.log('这里输出');
 		return element.style[styleName];
 	}
 };

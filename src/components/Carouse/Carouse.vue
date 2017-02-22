@@ -1,17 +1,19 @@
 <template>
-	<div :class="classes" class="ui-slider">
+	<div :class="classes">
 		<!-- <button :class="arrowClasses" class="left" @click="arrowEvent(-1)"></button> -->
         <div>
-        	<ul class="ui-slider-content" :class="[prefixCls + '-track']" :style="trackStyles" ref="slides">
+        	<ul :class="[prefixCls + '-content']" :style="trackStyles" ref="slides">
 				<slot name="body"></slot>
         	</ul>
         </div>
 		<!-- <button :class="arrowClasses" class="right" @click="arrowEvent(1)"></button> -->
-		<ul :class="dotsClasses" class="ui-slider-indicators">
+		<ul :class="[prefixCls + '-indicators']">
 			<template v-for="n in slides.length">
 				<!-- <li>{{n}}{{myCurrentIndex}}{{trackStyles}}</li> -->
-				<li :class="(n - 1) === myCurrentIndex ? 'current' : ''" @click="dotsEvent('click', n)" @mouseover="dotsEvent('hover', n)">
-					<slot name="index"></slot>
+				<li :class="(n - 1) === myCurrentIndex ? 'current' : ''" @click="dotsEvent('click', n - 1)" @mouseover="dotsEvent('hover', n-1)">
+					<!-- {{indicatorsShowType}} -->
+					<span v-if="indicatorsShowType === 'number'">{{n}}</span>
+					<span v-if="indicatorsShowType === 'array'">{{indicatorsShow[n - 1]}}</span>
 				</li>
 			</template>
 		</ul>
@@ -21,7 +23,10 @@
 <script>
 import oneOf from '../../utils/oneOf.js';
 import getStyle from '../../utils/getStyle.js';
-const prefixCls = 'ivu-carousel';
+import isArray from '../../utils/isArray.js';
+import prefix from '../../config/prefix.js';
+
+const prefixCls = `${prefix}-carousel`;
 
 export default {
 	name: 'Carousel',
@@ -69,6 +74,10 @@ export default {
 			validator (value) {
 				return value === 'auto' || Object.prototype.toString.call(value) === '[object Number]';
 			}
+		},
+		indicatorsShow: {
+			type: [String, Array],
+			default: ''
 		}
 	},
 	data () {
@@ -109,18 +118,26 @@ export default {
 				`${prefixCls}-dots`,
 				`${prefixCls}-dots-${this.dots}`
 			];
+		},
+		indicatorsShowType () {
+			let type = (typeof this.indicatorsShow).toLowerCase();
+
+			if (type === 'string') {
+				if (this.indicatorsShow === '') {
+					return false;
+				} else if (this.indicatorsShow === 'number') {
+					return 'number';
+				}
+			} else if (isArray(this.indicatorsShow) && this.indicatorsShow.length > 0) {
+				return 'array';
+			}
 		}
 	},
 	methods: {
 		findChild (cb) {
 			const find = function (child) {
 				const name = child.$options.componentName;
-				console.log('name');
-				// console.log(name);
-				console.log(child.$children);
 				if (name) {
-					// console.log('cb');
-					// console.log(cb);
 					cb(child);
 				} else if (child.$children.length) {
 					child.$children.forEach((innerChild) => {
@@ -129,10 +146,6 @@ export default {
 				}
 			};
 
-			console.log('this.sliderInstances');
-			// console.log(this.sliderInstances);
-			// console.log(this.$children[0]);
-			console.log(this.sliderInstances.length || !this.$children);
 			if (this.sliderInstances.length || !this.$children) {
 				this.sliderInstances.forEach((child) => {
 					find(child);
@@ -159,7 +172,8 @@ export default {
 			});
 
 			this.slides = slides;
-
+			// console.log('slides');
+			// console.log(slides);
 			this.updatePos();
 		},
 		updatePos () {
@@ -169,8 +183,6 @@ export default {
 			});
 
 			this.trackWidth = (this.slides.length || 0) * this.listWidth;
-			console.log('this.trackWidth');
-			console.log(this.trackWidth);
 		},
 		slotChange () {
 			this.$nextTick(() => {
@@ -183,9 +195,7 @@ export default {
 			});
 		},
 		handleResize () {
-			console.log('this.listWidth');
 			this.listWidth = parseInt(getStyle(document.body, 'width'));
-			console.log(this.listWidth);
 			this.updatePos();
 			this.updateOffset();
 		},
@@ -197,8 +207,6 @@ export default {
 			}
 			index = index % this.slides.length;
 			this.myCurrentIndex = index;
-			// console.log('this.myCurrentIndex');
-			// console.log(this.myCurrentIndex);
 		},
 		arrowEvent (offset) {
 			this.setAutoplay();
@@ -240,8 +248,6 @@ export default {
 		}
 	},
 	mounted () {
-		// console.log('created');
-		// console.log(this.$children);
 		this.updateSlides(true);
 		this.handleResize();
 		this.setAutoplay();
@@ -254,8 +260,39 @@ export default {
 </script>
 
 <style lang="css">
-.ui-slider img{
+.ivue-carousel {
+	position: relative;
 	width: 100%;
-	min-height: 109px;
+	overflow: hidden;
+}
+.ivue-carousel-content {
+	display: -webkit-box;
+}
+.ivue-carousel-content li {
+	-webkit-box-flex: 1;
+}
+.ivue-carousel-indicators{
+	position: absolute;
+	display: -webkit-box;
+	-webkit-box-pack: end;
+	width: 100%;
+	bottom: 10px;
+	right: 4px;
+	font-size: 0;
+}
+.ivue-carousel-indicators li {
+	display: inline-block;
+	width: 7px;
+	height: 7px;
+	background-color: rgba(0,0,0,.3);
+	border-radius: 10px;
+	margin-right: 6px;
+}
+.ivue-carousel-indicators li.current {
+	background-color: rgba(0,0,0,.7);
+}
+.ivue-carousel-indicators li span{
+	display: block;
+	text-align: center;
 }
 </style>

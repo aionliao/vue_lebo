@@ -1,70 +1,43 @@
 <template lang="html">
-	<section class="kaijiang" id="kj">
-		<h3>最新开奖</h3>
-		<div id="kj-wrap">
-			<Carouse v-if="statusConfig.carouseLoaded">
-	            <CarouseItem v-for="carouse in carouseData" slot="body">
-					<li :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" v-if="statusConfig.loaded" v-for="kjData in kjDatas">
-						<!-- kj-sfc -->
-						<p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
-						<ol>
-							<li v-for="ball in kjData.winCodeFirst">{{ball}}</li>
-							<li class="blue" v-if="kjData.winCodeSecond" v-for="ball in kjData.winCodeSecond">
-								{{ball}}
-							</li>
-						</ol>
-						<p class="a-btn">
-							<router-link :to="'/kj/' + kjData.gameNo">详情</router-link>
-							<router-link :to="'/tz/' + kjData.gameNo">投注</router-link>
-						</p>
+	<div id="kj-wrap">
+		<Carouse v-if="statusConfig.loaded"
+		:autoplay="carouseConfig.autoplay"
+		:indicatorsShow="carouseConfig.indicatorsShow"
+		>
+            <CarouseItem slot="body" v-for="kjData in kjDatas" :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" >
+				<p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
+				<ol>
+					<li v-for="ball in kjData.winCodeFirst">{{ball}}</li>
+					<li class="blue" v-if="kjData.winCodeSecond" v-for="ball in kjData.winCodeSecond">
+						{{ball}}
 					</li>
-	            </CarouseItem>
-
-	        </Carouse>
-			<ul class="ui-tab-nav">
-				<li class="current">大乐透</li>
-				<li>胜负彩</li>
-				<li>七星彩</li>
-				<li>排列三</li>
-				<li>排列五</li>
-			</ul>
-			<ul class="ui-tab-content" id="kjCon">
-
-				<li :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" v-if="statusConfig.loaded" v-for="(kjData, index) in kjDatas">
-						<!-- kj-sfc -->
-						<p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
-						<ol>
-							<li v-for="ball in kjData.winCodeFirst">{{ball}}</li>
-							<li class="blue" v-if="kjData.winCodeSecond" v-for="ball in kjData.winCodeSecond">
-								{{ball}}
-							</li>
-						</ol>
-						<p class="a-btn">
-							<router-link :to="'/kj/' + kjData.gameNo">详情</router-link>
-							<router-link :to="'/tz/' + kjData.gameNo">投注</router-link>
-						</p>
-				</li>
-				<li v-else>
-					<div class="loading">{{statusConfig.msg}}</div>
-				</li>
-			</ul >
-		</div>
-		<div class="kaijiang-foot">
-			<span class="icon-pointerleft"></span>
-			<span>左右滑动查看其它彩种</span>
-			<span class="icon-pointerright"></span>
-		</div>
-	</section>
+				</ol>
+				<p class="a-btn">
+					<router-link :to="'/kj/' + kjData.gameNo">详情</router-link>
+					<router-link :to="'/tz/' + kjData.gameNo">投注</router-link>
+				</p>
+            </CarouseItem>
+        </Carouse>
+		<!-- <ul class="vue-carousel-indicators">
+			<li class="current">大乐透</li>
+			<li>胜负彩</li>
+			<li>七星彩</li>
+			<li>排列三</li>
+			<li>排列五</li>
+		</ul> -->
+	</div>
 </template>
 
 <script>
 import vueAjax from '../../../../public/vueAjax.js';
-import Carouse from '../../../../public/Carouse.js';
+import Carouse from '../../../../components/Carouse/Carouse.vue';
+import CarouseItem from '../../../../components/Carouse/Carouse-item.vue';
 
 import dealResCode from '../../../../public/dealResCode.js';
 import dealKjAjaxData from './dealKjAjaxData.js';
 
 const orderArr = ['TC_DLT', 'TC_SF14', 'TC_QXC', 'TC_PL3', 'TC_PL5'];
+const orderArrShow = ['大乐透', '胜负彩', '七星彩', '排列三', '排列五'];
 
 export default {
 	data () {
@@ -73,11 +46,16 @@ export default {
                 loaded: false,
                 msg: '加载中...'
             },
-			kjDatas: {}
+			kjDatas: {},
+			carouseConfig: {
+				autoplay: false,
+				indicatorsShow: orderArrShow
+			}
 		};
 	},
 	components: {
-		Carouse
+		Carouse,
+		CarouseItem
 	},
 	created () {
 		vueAjax({
@@ -131,35 +109,46 @@ export default {
 	border-top: 1px solid #f4f4f4;
 	border-bottom: 1px solid #f4f4f4;
 }
-.kaijiang .ui-tab-nav{
+.kaijiang .vue-carousel-indicators{
+	display: -webkit-box;
 	position: absolute;
 	width: 78%;
 	top: 0;
 	right: 0;
+	left: initial;
+	bottom: initial;
 }
 @media(max-width: 340px) {
-	.kaijiang .ui-tab-nav{
+	.kaijiang .vue-carousel-indicators{
 		width: 76%;
 	}
 }
 .head_text{
 	font-size: 1.4rem;
 }
-.kaijiang .ui-tab-nav li{
+.kaijiang .vue-carousel-indicators li{
 	position: relative;
+	display: block;
+	-webkit-box-flex: 1;
+	height: 40px;
+	width: 20%;
+	padding: 0;
+	margin: 0;
+	line-height: 40px;
 	font-size: 1.4rem;
 	border-bottom: none;
+	border-radius: 0;
 	color: #999;
 	background-color: #eee;
 	border-top: 1px solid #f4f4f4;
 	border-bottom: 1px solid #f4f4f4;
 }
-.kaijiang .ui-tab-nav .current{
+.kaijiang .vue-carousel-indicators li.current{
 	background-color: #f32f0c;
 	color: #fff;
 	border: 1px solid #f32f0c;
 }
-.kaijiang .ui-tab-nav .current:before{
+.kaijiang .vue-carousel-indicators .current:before{
 	content: '';
 	position: absolute;
 	height: 0;
@@ -174,14 +163,17 @@ export default {
     transform: translateX(-50%);
 
 }
-.kaijiang .ui-tab-nav li:first-child{
+.kaijiang .vue-carousel-indicators li:first-child{
 	border-left: 1px solid #f4f4f4;
 }
-.kaijiang .ui-tab-content{
+.kaijiang .vue-carousel {
+	position: static;
+}
+.kaijiang .vue-carousel-content{
 	padding: 10px 0 0 0;
 	width: 500%;
 }
-.kaijiang .ui-tab-content>li {
+.kaijiang .vue-carousel-content>li {
 	padding: 0 10px;
 
 }
@@ -189,11 +181,11 @@ export default {
 	margin-right: 10px;
 }
 
-.ui-tab-content ol{
+.vue-carousel-content ol{
 	height: 36px;
 	margin: 10px 0;
 }
-.ui-tab-content ol li{
+.vue-carousel-content ol li{
 	height: 36px;
 	width: 36px;
 	border-radius: 50%;
@@ -204,7 +196,7 @@ export default {
 	float: left;
 	margin-right: 5px;
 }
-.ui-tab-content .kj-sfc li{
+.vue-carousel-content .kj-sfc li{
 	background-color: #33cc5c;
     margin-right: 2px;
     width: 18px;
@@ -214,7 +206,7 @@ export default {
     font-size: 1.4rem;
 	border-radius: 0;
 }
-.ui-tab-content ol .blue{
+.vue-carousel-content ol .blue{
 	background-color: #31cefb;
 }
 .a-btn{

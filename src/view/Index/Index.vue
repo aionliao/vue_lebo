@@ -1,18 +1,15 @@
 <template>
-    <div>
+    <section>
         <Headers></Headers>
-
-        <Carouse v-if="statusConfig.carouseLoaded">
-            <CarouseItem v-for="carouse in carouseData" slot="body">
-                <a :href="carouse.webUrl">
-                    <img :src="carouse.turnImgUrl" />
-                </a>
-            </CarouseItem>
-        </Carouse>
-        <div class="ui-slider" v-else>
-            <ul class="ui-slider-content">
-                <li><img :src="'/static/img/lazy-head.jpg'"></li>
-            </ul>
+        <div class="index-carouse">
+            <Carouse v-if="statusConfig.carouseLoaded">
+                <CarouseItem v-for="carouse in carouseData" slot="body">
+                    <a :href="carouse.webUrl">
+                        <img :src="carouse.turnImgUrl" />
+                    </a>
+                </CarouseItem>
+            </Carouse>
+            <img v-else :src="'/static/img/lazy-head.jpg'"></li>
         </div>
         <SubNav></SubNav>
         <Notice></Notice>
@@ -31,9 +28,17 @@
         <!--快投 start-->
         <FastTz></FastTz>
         <!--开奖 start-->
-        <Kj></Kj>
+        <section class="kaijiang" id="kj">
+    		<h3>最新开奖</h3>
+            <Kj></Kj>
+            <div class="kaijiang-foot">
+    			<span class="icon-pointerleft"></span>
+    			<span>左右滑动查看其它彩种</span>
+    			<span class="icon-pointerright"></span>
+    		</div>
+    	</section>
         <Footers></Footers>
-    </div>
+    </section>
 </template>
 
 <script type="text/ecmascript6">
@@ -93,7 +98,6 @@ export default {
                 this.statusConfig.carouseLoaded = true;
                 this.carouseData = data.list;
             }
-            console.log(response);
         }, (response) => {});
     }
 }
@@ -102,5 +106,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
     @import "../../less/index/index.less";
+    .index-carouse img{
+    	width: 100%;
+    	min-height: 109px;
+    }
+
     .lottery-box .loading, .kaijiang .loading{position: absolute;}
 </style>

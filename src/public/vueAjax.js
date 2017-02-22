@@ -12,7 +12,6 @@ function vueAjax (option) {
     let transactionType = option.data.transactionType;
     let getUrl = '/static/data/' + transactionType + '.json';
 
-    console.log(method);
     let ajaxObject = {
         'get': () => {
             return that.$http.get(getUrl);

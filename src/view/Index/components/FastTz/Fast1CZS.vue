@@ -82,8 +82,6 @@ export default {
     },
     computed: {
         matchSellOutTime () {
-            console.log('=============matchSellOutTime============');
-            console.log(formatTime('ymdhms', this.fast1CZSData.matchSellOutTime));
             let matchSellOutTime = this.fast1CZSData.matchSellOutTime;
             if (!matchSellOutTime) {
                 return;
@@ -92,8 +90,6 @@ export default {
         },
         realTimeSpArr () {
             // 3_5.80@1_4.30@0_1.38
-            console.log('=============realTimeSp============');
-            console.log(this.fast1CZSData.realTimeSp);
             let realTimeSp = this.fast1CZSData.realTimeSp;
             if (!realTimeSp) {
                 return;
@@ -107,28 +103,22 @@ export default {
                 copyArr.sort(function (a, b) {
                     return a - b;
                 });
-                console.log(copyArr);
                 currentIndex = this.realTimeSpArr.indexOf(copyArr[0]);
-                console.log(currentIndex);
                 return currentIndex;
             } else {
                 return this.currentIndexLast;
             }
         },
         realTimeSpMinSpMax () {
-            console.log('=======realTimeSpMinSp=======');
-            console.log(this.fast1CZSData.realTimeSpMinSp);
             let realTimeSpMinSp = this.fast1CZSData.realTimeSpMinSp;
             if (!realTimeSpMinSp) {
                 return;
             }
             let realTimeSpMinSpArr = dealSp(realTimeSpMinSp);
-            console.log(realTimeSpMinSpArr);
             realTimeSpMinSpArr.sort(function (a, b) {
                 return a - b;
             });
             realTimeSpMinSpArr.reverse();
-            console.log(realTimeSpMinSpArr[0]);
             return realTimeSpMinSpArr[0];
         },
         awardMoney () {
@@ -146,9 +136,7 @@ export default {
                 '平局',
                 matchList.guestTeamName
             ];
-            console.log('============realTimeSpArr================');
             let realTimeSpArr = dealSp(this.fast1CZSData.realTimeSp);
-            console.log(realTimeSpArr);
             for (let i = 0, len = teamNameArr.length; i < len; i++) {
                 spfArr.push({
                     sp: realTimeSpArr[i],
