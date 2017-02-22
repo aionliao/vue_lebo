@@ -29,7 +29,7 @@ import prefix from '../../config/prefix.js';
 const prefixCls = `${prefix}-carousel`;
 
 export default {
-	name: 'Carousel',
+	name: 'carousel',
 	props: {
 		arrow: {
 			type: String,

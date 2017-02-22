@@ -1,10 +1,10 @@
 <template lang="html">
 	<div id="kj-wrap">
-		<Carouse v-if="statusConfig.loaded"
+		<carouse v-if="statusConfig.loaded"
 		:autoplay="carouseConfig.autoplay"
 		:indicatorsShow="carouseConfig.indicatorsShow"
 		>
-            <CarouseItem slot="body" v-for="kjData in kjDatas" :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" >
+            <carouseItem slot="body" v-for="kjData in kjDatas" :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" >
 				<p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
 				<ol>
 					<li v-for="ball in kjData.winCodeFirst">{{ball}}</li>
@@ -16,8 +16,8 @@
 					<router-link :to="'/kj/' + kjData.gameNo">详情</router-link>
 					<router-link :to="'/tz/' + kjData.gameNo">投注</router-link>
 				</p>
-            </CarouseItem>
-        </Carouse>
+            </carouseItem>
+        </carouse>
 		<!-- <ul class="vue-carousel-indicators">
 			<li class="current">大乐透</li>
 			<li>胜负彩</li>
@@ -30,8 +30,8 @@
 
 <script>
 import vueAjax from '../../../../public/vueAjax.js';
-import Carouse from '../../../../components/Carouse/Carouse.vue';
-import CarouseItem from '../../../../components/Carouse/Carouse-item.vue';
+import carouse from '../../../../components/carouse/carouse.vue';
+import carouseItem from '../../../../components/carouse/carouse-item.vue';
 
 import dealResCode from '../../../../public/dealResCode.js';
 import dealKjAjaxData from './dealKjAjaxData.js';
@@ -54,8 +54,8 @@ export default {
 		};
 	},
 	components: {
-		Carouse,
-		CarouseItem
+		carouse,
+		carouseItem
 	},
 	created () {
 		vueAjax({
@@ -109,7 +109,7 @@ export default {
 	border-top: 1px solid #f4f4f4;
 	border-bottom: 1px solid #f4f4f4;
 }
-.kaijiang .vue-carousel-indicators{
+.kaijiang .ivue-carousel-indicators{
 	display: -webkit-box;
 	position: absolute;
 	width: 78%;
@@ -119,14 +119,14 @@ export default {
 	bottom: initial;
 }
 @media(max-width: 340px) {
-	.kaijiang .vue-carousel-indicators{
+	.kaijiang .ivue-carousel-indicators{
 		width: 76%;
 	}
 }
 .head_text{
 	font-size: 1.4rem;
 }
-.kaijiang .vue-carousel-indicators li{
+.kaijiang .ivue-carousel-indicators li{
 	position: relative;
 	display: block;
 	-webkit-box-flex: 1;
@@ -143,12 +143,12 @@ export default {
 	border-top: 1px solid #f4f4f4;
 	border-bottom: 1px solid #f4f4f4;
 }
-.kaijiang .vue-carousel-indicators li.current{
+.kaijiang .ivue-carousel-indicators li.current{
 	background-color: #f32f0c;
 	color: #fff;
 	border: 1px solid #f32f0c;
 }
-.kaijiang .vue-carousel-indicators .current:before{
+.kaijiang .ivue-carousel-indicators .current:before{
 	content: '';
 	position: absolute;
 	height: 0;
@@ -163,17 +163,17 @@ export default {
     transform: translateX(-50%);
 
 }
-.kaijiang .vue-carousel-indicators li:first-child{
+.kaijiang .ivue-carousel-indicators li:first-child{
 	border-left: 1px solid #f4f4f4;
 }
-.kaijiang .vue-carousel {
+.kaijiang .ivue-carousel {
 	position: static;
 }
-.kaijiang .vue-carousel-content{
+.kaijiang .ivue-carousel-content{
 	padding: 10px 0 0 0;
 	width: 500%;
 }
-.kaijiang .vue-carousel-content>li {
+.kaijiang .ivue-carousel-content>li {
 	padding: 0 10px;
 
 }
@@ -181,11 +181,11 @@ export default {
 	margin-right: 10px;
 }
 
-.vue-carousel-content ol{
+.ivue-carousel-content ol{
 	height: 36px;
 	margin: 10px 0;
 }
-.vue-carousel-content ol li{
+.ivue-carousel-content ol li{
 	height: 36px;
 	width: 36px;
 	border-radius: 50%;
@@ -196,7 +196,7 @@ export default {
 	float: left;
 	margin-right: 5px;
 }
-.vue-carousel-content .kj-sfc li{
+.ivue-carousel-content .kj-sfc li{
 	background-color: #33cc5c;
     margin-right: 2px;
     width: 18px;
@@ -206,7 +206,7 @@ export default {
     font-size: 1.4rem;
 	border-radius: 0;
 }
-.vue-carousel-content ol .blue{
+.ivue-carousel-content ol .blue{
 	background-color: #31cefb;
 }
 .a-btn{

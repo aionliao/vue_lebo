@@ -77,5 +77,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "CaiList.less";
+@import "caiList.less";
 </style>

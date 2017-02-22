@@ -1,21 +1,27 @@
 <template>
     <section>
-        <Headers></Headers>
+        <headers>
+            <img class="logo lazy-load" v-lazy="imgUrl">
+            <router-link to="/download">
+                <span class="head_text">下载客户端</span>
+                <span class="icon-down"></span>
+            </router-link>
+        </headers>
         <div class="index-carouse">
-            <Carouse v-if="statusConfig.carouseLoaded">
-                <CarouseItem v-for="carouse in carouseData" slot="body">
+            <carouse v-if="statusConfig.carouseLoaded">
+                <carouseItem v-for="carouse in carouseData" slot="body">
                     <a :href="carouse.webUrl">
                         <img :src="carouse.turnImgUrl" />
                     </a>
-                </CarouseItem>
-            </Carouse>
+                </carouseItem>
+            </carouse>
             <img v-else :src="'/static/img/lazy-head.jpg'"></li>
         </div>
         <SubNav></SubNav>
         <Notice></Notice>
         <div class="user nologin" id="user"></div>
         <!-- 彩种控制 -->
-        <CaiList></CaiList>
+        <caiList></caiList>
         <!-- 娱乐场 -->
         <section class="disport" id="disport">
             <router-link to="/disport">
@@ -37,16 +43,16 @@
     			<span class="icon-pointerright"></span>
     		</div>
     	</section>
-        <Footers></Footers>
+        <footers></footers>
     </section>
 </template>
 
 <script type="text/ecmascript6">
-import Headers from '../../components/Headers/Headers.vue';
-import Carouse from '../../components/Carouse/Carouse.vue';
-import CarouseItem from '../../components/Carouse/Carouse-item.vue';
-import CaiList from '../../components/CaiList/CaiList.vue';
-import Footers from '../../components/Footers/Footers.vue';
+import headers from '../../components/headers/headers.vue';
+import carouse from '../../components/carouse/carouse.vue';
+import carouseItem from '../../components/carouse/carouse-item.vue';
+import caiList from '../../components/caiList/caiList.vue';
+import footers from '../../components/footers/footers.vue';
 
 import vueAjax from '../../public/vueAjax.js';
 import dealResCode from '../../public/dealResCode.js';
@@ -60,16 +66,16 @@ import Kj from './components/Kj/Kj.vue';
 export default {
     name: 'hello',
     components: {
-        Headers,
-        Carouse,
-        CarouseItem,
+        headers,
+        carouse,
+        carouseItem,
         SubNav,
         Notice,
-        CaiList,
+        caiList,
         Red,
         FastTz,
         Kj,
-        Footers
+        footers
     },
     data () {
         return {
@@ -77,7 +83,8 @@ export default {
                 carouseLoaded: false
             },
             carouseData: [],
-            disportImgUrl: '/static/img/disport.png'
+            disportImgUrl: '/static/img/disport.png',
+            imgUrl: './static/img/logo.jpg'
         }
     },
     created () {
@@ -105,7 +112,48 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
-    @import "../../less/index/index.less";
+    @import "../../styles/index/index.less";
+    header {
+		box-sizing: border-box;
+		position: relative;
+		width: 100%;
+		background-color: #FFF;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid #f4f4f4;
+	}
+	.gameNo-more header{
+		background-color: #f32f0c;
+		color: #fff;
+		text-align: center;
+		font-size: 1.6rem;
+	}
+	.gameNo-more .icon-zuo{
+	    position: absolute;
+	    left: 0;
+	    width: 40px;
+	    font-size: 20px;
+	    color: #FFF;
+	}
+	.logo{
+		margin: 5px;
+		height: 40px;
+	}
+
+	.head_text {
+		position: absolute;
+		top: 0;
+		right: 38px;
+		color: #666;
+		font-size:1.4rem;
+	}
+	.icon-down {
+		position: absolute;
+		top: 0px;
+		right: 10px;
+		color: #666;
+		font-size: 2rem;
+	}
     .index-carouse img{
     	width: 100%;
     	min-height: 109px;
