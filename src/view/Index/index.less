@@ -1,25 +1,39 @@
-@import '../public/tips.less';
-@import 'public/cai-list.less';
-@import 'public/index-lazy-load.less';
+@import "../../styles/custom";
 
-body{font-size: 1.4rem;}
-/**/
-.ui-slider li img{
-	width: 100%;
-}
 .lottery-box .empty{
-	height: 166px;
+	min-height: 166px;
 	text-align: center;
 	line-height: 166px;
 	font-size: 1.4rem;
 }
-.event-wrap .empty{
-	height: 90px;
-	text-align: center;
-	line-height: 90px;
-}
 /* header*/
+header {
+	position: relative;
+	background-color: #FFF;
+	border-bottom: 1px solid @body-background;
+}
 
+.logo{
+	margin: 5px;
+	height: 40px;
+}
+
+.head_text {
+	color: #666;
+	font-size:1.4rem;
+}
+.download {
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	color: #666;
+}
+.index-carouse img{
+	width: 100%;
+	min-height: 109px;
+}
+
+.lottery-box .loading, .kaijiang .loading{position: absolute;}
 /* banner */
 
 // notice
@@ -223,91 +237,4 @@ body{font-size: 1.4rem;}
 	margin: 10px auto;
 	border-radius: 30px;
 	box-shadow: 0 4px #022950;
-}
-/*红包*/
-
-/* 快投 */
-
-/* 开奖 */
-
-.kaijiang-foot span {
-	/*margin: 0 10px;*/
-}
-/* footer */
-
-
-/*动画*/
-@keyframes rotate720 {
-	0% {
-		transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(720deg);
-		-webkit-transform: rotate(720deg);
-	}
-}
-@-webkit-keyframes rotate720 {
-	0% {
-		transform: rotate(0deg);
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(720deg);
-		-webkit-transform: rotate(720deg);
-	}
-}
-
-// index-my.less
-.ui-slider{
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-	// padding-top: 31.25%;
-}
-.ui-slider-content{
-	display: -webkit-box;
-	// position: absolute;
-	left: 0;
-	top: 0;
-	height: 100%;
-	width: 100%;
-}
-.ui-slider li{
-	-webkit-box-flex: 1;
-	width: 100%;
-	height: 100%;
-}
-.ui-slider span{
-	display: block;
-	width: 100%;
-	height: 100%;
-	background-repeat: no-repeat;
-	-webkit-background-size: 100% 100%;
-}
-.ui-slider-indicators {
-	position: absolute;
-	display: -webkit-box;
-	-webkit-box-pack: end;
-	width: 100%;
-	bottom: 10px;
-	right: 4px;
-	font-size: 0;
-}
-.ui-slider-indicators li {
-	display: inline-block;
-	width: 7px;
-	height: 7px;
-	background-color: rgba(0,0,0,.3);
-	border-radius: 10px;
-	margin-right: 6px;
-
-}
-.ui-slider-indicators .current{
-	background-color: rgba(255, 255, 255, 0.7);
-}
-
-.lottery-tab  .dg-text{text-align: left;}
-.ui-tab-nav li:last-child{
-	border-right: none;
 }

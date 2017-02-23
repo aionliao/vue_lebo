@@ -1,17 +1,18 @@
 <template>
 	<row>
-		<i-col span="12">col-12</i-col>
-        <i-col span="12">col-12</i-col>
+		<col span="12">col-12</col>
+		<col span="12">col-12</col>
+		<col span="12">col-12</col>
+        <col span="12">col-12</col>
 	</row>
 </template>
 
 <script>
-	import row from '../../components/layout/row.vue';
-	import icol from '../../components/layout/col.vue';
+	import {row, col} from '../../components/layout/index.js';
 	export default {
 		components: {
 			row,
-			icol
+			col
 		}
 	};
 </script>

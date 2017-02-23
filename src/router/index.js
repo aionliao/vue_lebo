@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Index from '../view/Index/Index.vue';
-import Login from '../view/Login/Login.vue';
+// import Login from '../view/Login/Login.vue';
 import Activity from '../view/Activity/Activity.vue';
 import JC from '../view/JC/JC.vue';
 
@@ -14,11 +14,11 @@ export default new Router({
             name: 'Index',
             component: Index
         },
-        {
-            path: '/login',
-            name: 'Login',
-            component: Login
-        },
+        // {
+        //     path: '/login',
+        //     name: 'Login',
+        //     component: Login
+        // },
         {
             path: '/activity',
             name: 'Activity',

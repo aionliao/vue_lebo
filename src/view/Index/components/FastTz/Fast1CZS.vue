@@ -4,9 +4,9 @@
         <div v-if="statusConfig.loaded">
             <h3>
                 <i>{{fast1CZSData.leagueShort}}<span class="time">{{matchSellOutTime}}</span>截止</i>
-                <a class="refresh" id="guessRefresh">
-                    <span class="icon-duihuan"></span>换一场
-                </a>
+                <span class="refresh" id="guessRefresh">
+                    <icon type="duihuan"></icon>换一场
+                </span>
             </h3>
             <ul class="guess" id="guess">
                 <li v-for="(matchInfo, index) in matchAgainstSpInfoList" @click="setCurrentIndex(index)" :class="index === currentIndex ? 'current' : ''" >
@@ -36,6 +36,7 @@ import formatTime from '../../../../utils/formatTime.js';
 import isEmptyObject from '../../../../utils/isEmptyObject.js';
 import deepCopy from '../../../../utils/deepCopy.js';
 import unitConfig from '../../../../config/unitConfig.js';
+import icon from '../../../../components/icon/icon.vue';
 
 function dealSp (spStr) {
     if (!spStr) {
@@ -49,6 +50,9 @@ function dealSp (spStr) {
     return realTimeSpArr;
 }
 export default {
+    components: {
+        icon
+    },
     data () {
         return {
             statusConfig: {
@@ -160,6 +164,3 @@ export default {
     }
 };
 </script>
-
-<style lang="css">
-</style>

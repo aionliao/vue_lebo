@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "FastTz.less";
+@import "fastTz.less";
 </style>

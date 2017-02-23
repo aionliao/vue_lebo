@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../less/login/login.less";
+@import "../../styles/login/login.less";
 </style>

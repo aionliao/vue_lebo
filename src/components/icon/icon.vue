@@ -12,7 +12,7 @@ export default {
         size: [Number, String],
         color: String
     },
-    computed () {
+    computed: {
         classes () {
             return `${prefixCls} ${prefixCls}-${this.type}`;
         },
