@@ -6,11 +6,11 @@
 		</ul>
 		<ul class="ui-tab-content" id="lotteryBoxCon">
 			<li id="li_01" class="current">
-				<Fast1CZS>
+				<fast1CZS>
 					<div class="loading">
 						加载中...
 					</div>
-				</Fast1CZS>
+				</fast1CZS>
 			</li>
 			<li id="li_02">
 				<div class="loading">
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import Fast1CZS from './Fast1CZS.vue';
+import fast1CZS from './fast1CZS.vue';
 
 export default {
 	components: {
-		Fast1CZS
+		fast1CZS
 	}
 };
 </script>

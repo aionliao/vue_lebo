@@ -17,8 +17,8 @@
             </carouse>
             <img v-else :src="'/static/img/lazy-head.jpg'"></li>
         </div>
-        <SubNav></SubNav>
-        <Notice></Notice>
+        <subNav></subNav>
+        <notice></notice>
         <div class="user nologin" id="user"></div>
         <!-- 彩种控制 -->
         <caiList :caiList="indexCaiList"></caiList>
@@ -29,14 +29,14 @@
             </router-link>
         </section>
         <!-- 红包 -->
-        <Red></Red>
+        <red></red>
 
         <!--快投 start-->
-        <FastTz></FastTz>
+        <fastTz></fastTz>
         <!--开奖 start-->
         <section class="kaijiang" id="kj">
     		<h3>最新开奖</h3>
-            <Kj></Kj>
+            <kj></kj>
             <div class="kaijiang-foot">
     			<span class="icon-pointerleft"></span>
     			<span>左右滑动查看其它彩种</span>
@@ -59,11 +59,11 @@ import icon from '../../components/icon/icon.vue';
 import vueAjax from '../../public/vueAjax.js';
 import dealResCode from '../../public/dealResCode.js';
 
-import SubNav from './components/SubNav/SubNav.vue';
-import Notice from './components/Notice/Notice.vue';
-import Red from './components/Red/Red.vue';
-import FastTz from './components/FastTz/FastTz.vue';
-import Kj from './components/Kj/Kj.vue';
+import subNav from './components/subNav/subNav.vue';
+import notice from './components/notice/notice.vue';
+import red from './components/red/red.vue';
+import fastTz from './components/fastTz/fastTz.vue';
+import kj from './components/kj/kj.vue';
 
 import indexCaiList from '../../config/indexCaiList.js';
 
@@ -74,12 +74,12 @@ export default {
         carouse,
         carouseItem,
         conWrap,
-        SubNav,
-        Notice,
+        subNav,
+        notice,
         caiList,
-        Red,
-        FastTz,
-        Kj,
+        red,
+        fastTz,
+        kj,
         footers,
         icon
     },
