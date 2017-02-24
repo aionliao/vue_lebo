@@ -1,7 +1,7 @@
 <template>
 	<headerSimple
 		link="/"
-		title="登录"
+		title="签到"
 	></headerSimple>
 </template>
 

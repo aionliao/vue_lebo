@@ -1,7 +1,7 @@
 <template>
 	<headerSimple
 		link="/"
-		title="登录"
+		title="开奖中心"
 	></headerSimple>
 </template>
 

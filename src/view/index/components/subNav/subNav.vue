@@ -40,7 +40,7 @@ export default {
 					insertHtml: '开奖'
 				},
 				{
-					linkUrl: '/other/info',
+					linkUrl: '/info',
 					imgUrl: './static/img/icon/icon-nav/icon-info.png',
 					insertHtml: '资讯'
 				},
