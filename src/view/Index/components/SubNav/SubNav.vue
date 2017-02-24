@@ -1,20 +1,26 @@
 <template lang="html">
-	<nav id="nav">
-		<ul>
-			<li v-for="nav in navs">
-				<router-link :to="nav.linkUrl">
-					<div class="img">
-						<img v-lazy="nav.imgUrl">
-					</div>
-					<span>{{nav.insertHtml}}</span>
-				</router-link>
-			</li>
-		</ul>
+	<nav class="index-nav">
+		<row>
+			<i-col span="1-5" v-for="nav in navs">
+				<boxWrap
+					:link="nav.linkUrl"
+					:imgSrc="nav.imgUrl"
+					:innerText="nav.insertHtml"
+				></boxWrap>
+			</i-col>
+		</row>
 	</nav>
 </template>
 
 <script>
+import { Row, iCol } from '../../../../components/layout/index.js';
+import boxWrap from '../../../../components/boxWrap/boxWrap.vue';
 export default {
+	components: {
+		Row,
+		iCol,
+		boxWrap
+	},
 	data () {
 		return {
 			navs: [
@@ -49,6 +55,6 @@ export default {
 };
 </script>
 
-<style lang="css">
-@import "subNav.less";
+<style lang="less">
+	@import "subNav.less";
 </style>

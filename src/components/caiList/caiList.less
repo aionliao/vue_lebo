@@ -1,51 +1,48 @@
-/* 投注选项 */
-.caiz-list {
+@import "../../styles/custom.less";
+@name-space  			    : caiz-list;
+@each-col-hei 				: 95px;
+@a-pad 						: 10px;
+@a-color 					: #000;
+@img-hei 					: 50px;
+.@{name-space} {
 	background: #fff;
 	text-align: center;
 	width: 100%;
 	overflow: hidden;
-	margin-bottom: 10px;
-	border-top: 1px solid #f4f4f4;
+	margin-bottom: @module-space;
+	border-top: 1px solid @border-color-base;
 }
 
-.gameNo-more .caiz-list{
-	border-top:  none;
+.@{name-space} .@{css-prefix}-col {
+	height: @each-col-hei;
+	border-right: 1px solid @border-color-base;
+	border-bottom: 1px solid @border-color-base;
 }
-.caiz-list ul {
-	overflow: hidden;
-}
-.caiz-list li {
-	position: relative;
-	display: block;
-	float: left;
-	height: 95px;
-	text-align: center;
-	border-right: 1px solid #f4f4f4;
-	width: 33%;
-	border-bottom: 1px solid #f4f4f4;
-}
-.caiz-list li:nth-child(3n){
+.@{name-space} li:nth-child(3n){
 	border-right: none;
 }
-.caiz-list a{
-	display: block;
-	padding: 10px 0;
+.@{name-space} a{
+	padding: @a-pad 0;
+	color: @a-color;
+	&:link {
+		color: @a-color;
+	}
+	&:hover {
+		color: @a-color;
+	}
+	&:active {
+		color: @a-color;
+	}
+	&:visited {
+		color: @a-color;
+	}
 }
-.caiz-list a:link, .caiz-list a:hover,
-.caiz-list a:active, .caiz-list a:visited {
-	color: #000;
+.@{name-space} .img-wrap {
+	width: @img-hei;
+	height: @img-hei;
 }
-.caiz-list i {
-	text-align: center;
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-}
-.caiz-list img{
-	width: 100%;
-}
-.caiz-list .caiz-name {
-	display: block;
+
+.@{name-space} p{
 	font-size: 1.5rem;
 	color: #333;
 	margin-top: 6px;
@@ -53,22 +50,17 @@
 .no-sale, .award, .add-award, .cai-activity{
 	position: relative;
 }
-.caiz-list .award .caiz-name,
-.caiz-list .add-award .caiz-name,
-.caiz-list .cai-activity .caiz-name {
+.@{name-space} .award .caiz-name,
+.@{name-space} .add-award .caiz-name,
+.@{name-space} .cai-activity .caiz-name {
 	color: #f32f0c;
 }
 
-.no-sale a:after,.award a:after, .add-award a:after, .cai-activity a:after{
-	// position: absolute;
-	// content: '';
-	// right: 0;
-	// top: -1px;
-	// width: 30px;
-	// height: 30px;
-	// background-size: 30px auto;
+.no-sale a:after,
+.award a:after,
+.add-award a:after,
+.cai-activity a:after{
 	position: absolute;
-
     color: #ffeb46;
     line-height: 28px;
     font-size: 1.2rem;

@@ -1,3 +1,3 @@
-import row from 'row.vue';
-import col from 'col.vue';
-export {row, col};
+import Row from './row.vue';
+import iCol from './col.vue';
+export {Row, iCol};

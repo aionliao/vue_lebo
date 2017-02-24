@@ -21,7 +21,7 @@
         <Notice></Notice>
         <div class="user nologin" id="user"></div>
         <!-- 彩种控制 -->
-        <caiList></caiList>
+        <caiList :caiList="indexCaiList"></caiList>
         <!-- 娱乐场 -->
         <section class="disport" id="disport">
             <router-link to="/disport">
@@ -51,6 +51,7 @@
 import headers from '../../components/headers/headers.vue';
 import carouse from '../../components/carouse/carouse.vue';
 import carouseItem from '../../components/carouse/carouse-item.vue';
+import conWrap from '../../components/conWrap/conWrap.vue';
 import caiList from '../../components/caiList/caiList.vue';
 import footers from '../../components/footers/footers.vue';
 import icon from '../../components/icon/icon.vue';
@@ -64,12 +65,15 @@ import Red from './components/Red/Red.vue';
 import FastTz from './components/FastTz/FastTz.vue';
 import Kj from './components/Kj/Kj.vue';
 
+import indexCaiList from '../../config/indexCaiList.js';
+
 export default {
     name: 'hello',
     components: {
         headers,
         carouse,
         carouseItem,
+        conWrap,
         SubNav,
         Notice,
         caiList,
@@ -84,6 +88,7 @@ export default {
             statusConfig: {
                 carouseLoaded: false
             },
+            indexCaiList: indexCaiList,
             carouseData: [],
             disportImgUrl: '/static/img/disport.png',
             imgUrl: '/static/img/logo.jpg'

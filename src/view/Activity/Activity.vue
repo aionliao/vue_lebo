@@ -1,18 +1,15 @@
 <template>
 	<row>
-		<col span="12">col-12</col>
-		<col span="12">col-12</col>
-		<col span="12">col-12</col>
-        <col span="12">col-12</col>
+		<i-col :span="12">sadsa</i-col>
 	</row>
 </template>
 
 <script>
-	import {row, col} from '../../components/layout/index.js';
+	import { Row, iCol } from '../../components/layout/index.js';
 	export default {
 		components: {
-			row,
-			col
+			Row,
+			iCol
 		}
 	};
 </script>

@@ -1,5 +1,8 @@
 <template lang="html">
 	<section class="reg-bag" id="redBag">
+		<row>
+			<i-col></i-col>
+		</row>
 		<ul>
 			<li v-for="red in reds" :class="red.className">
 				<h5>
@@ -14,7 +17,15 @@
 </template>
 
 <script>
+import {Row, iCol} from '../../../../components/layout/index.js';
+import boxWrap from '../../../../components/boxWrap/boxWrap.vue';
+
 export default {
+	components: {
+		Row,
+		iCol,
+		boxWrap
+	},
 	data () {
 		return {
 			reds: [

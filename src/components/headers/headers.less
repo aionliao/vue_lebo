@@ -1,6 +1,7 @@
 @import "../../styles/custom.less";
 
-@header-height      :50px;
+@header-height      : 50px;
+@header-color       : #fff;
 header{
     position: fixed;
     width: 100%;
@@ -10,4 +11,9 @@ header{
     top:0;
     left:0;
     z-index: @zindex-header;
+}
+header h2 {
+    text-align: center;
+    color: @header-color;
+    font-size: 16px;
 }
