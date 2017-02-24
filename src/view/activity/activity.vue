@@ -1,15 +1,16 @@
 <template>
-	<row>
-		<i-col :span="12">sadsa</i-col>
-	</row>
+	<headerSimple
+		link="/"
+		title="活动"
+	></headerSimple>
 </template>
 
 <script>
-	import { Row, iCol } from '../../components/layout/index.js';
+	import headerSimple from '../../components/headerSimple/headerSimple.vue';
+
 	export default {
 		components: {
-			Row,
-			iCol
+			headerSimple
 		}
 	};
 </script>

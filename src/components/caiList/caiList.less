@@ -1,52 +1,8 @@
+@name-space: caiz-list;
 @import "../../styles/custom.less";
-@name-space  			    : caiz-list;
-@each-col-hei 				: 95px;
-@a-pad 						: 10px;
-@a-color 					: #000;
-@img-hei 					: 50px;
-.@{name-space} {
-	background: #fff;
-	text-align: center;
-	width: 100%;
-	overflow: hidden;
-	margin-bottom: @module-space;
-	border-top: 1px solid @border-color-base;
-}
+@import "../../styles/index/indexBoxWrap.less";
 
-.@{name-space} .@{css-prefix}-col {
-	height: @each-col-hei;
-	border-right: 1px solid @border-color-base;
-	border-bottom: 1px solid @border-color-base;
-}
-.@{name-space} li:nth-child(3n){
-	border-right: none;
-}
-.@{name-space} a{
-	padding: @a-pad 0;
-	color: @a-color;
-	&:link {
-		color: @a-color;
-	}
-	&:hover {
-		color: @a-color;
-	}
-	&:active {
-		color: @a-color;
-	}
-	&:visited {
-		color: @a-color;
-	}
-}
-.@{name-space} .img-wrap {
-	width: @img-hei;
-	height: @img-hei;
-}
 
-.@{name-space} p{
-	font-size: 1.5rem;
-	color: #333;
-	margin-top: 6px;
-}
 .no-sale, .award, .add-award, .cai-activity{
 	position: relative;
 }

@@ -1,12 +1,12 @@
 <template>
     <headers>
-        <router-link to="/">
+        <router-link :to="link">
             <headerIcon
             type="left-1"
             iconType="zuo"
             ></headerIcon>
         </router-link>
-        <h2>{{gameNoShow}}</h2>
+        <h2>{{title}}</h2>
     </headers>
 </template>
 
@@ -14,12 +14,13 @@
 import headers from '../../components/headers/headers.vue';
 import headerIcon from '../../components/headerIcon/headerIcon.vue';
 export default {
+    props: {
+        link: String,
+        title: String
+    },
     components: {
         headers,
         headerIcon
     }
 };
 </script>
-
-<style lang="css">
-</style>

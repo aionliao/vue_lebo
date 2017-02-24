@@ -1,18 +1,14 @@
 <template lang="html">
 	<section class="reg-bag" id="redBag">
 		<row>
-			<i-col></i-col>
+			<i-col v-for="red in reds" span="8">
+				<boxWrap
+					:link="red.linkUrl"
+					:imgSrc="red.imgUrl"
+					:innerText="red.insertHtml"
+				></boxWrap>
+			</i-col>
 		</row>
-		<ul>
-			<li v-for="red in reds" :class="red.className">
-				<h5>
-					<router-link :to="red.linkUrl">
-						<img v-lazy="red.imgUrl">
-						<span>{{red.insertHtml}}</span>
-					</router-link>
-				</h5>
-			</li>
-		</ul>
 	</section>
 </template>
 
@@ -53,6 +49,6 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="less">
 @import "red.less";
 </style>
