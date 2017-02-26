@@ -1,32 +1,55 @@
 <template>
-	<router-link v-if="link" :to="link">
-		<div class="img-wrap" v-if="imgSrc">
-			<img v-lazy="imgSrc"/>
-		</div>
-		<p v-if="innerText">{{innerText}}</p>
-	</router-link>
-	<a v-else>
-		<div class="img-wrap" v-if="imgSrc">
-			<img v-lazy="imgSrc"/>
-		</div>
-		<p v-if="innerText">{{innerText}}</p>
-	</a>
+	<div class="box-wrap">
+		<template v-if="link">
+
+			<router-link v-if="urlType==='router'" :to="link">
+				<boxWrapCon
+				:title="title"
+				:imgSrc="imgSrc"
+				:innerText="innerText"
+				></boxWrapCon>
+			</router-link>
+			<a :href="link" v-else>
+				<boxWrapCon
+				:title="title"
+				:imgSrc="imgSrc"
+				:innerText="innerText"
+				></boxWrapCon>
+			</a>
+		</template>
+		<a v-else>
+			<boxWrapCon
+			:title="title"
+			:imgSrc="imgSrc"
+			:innerText="innerText"
+			></boxWrapCon>
+		</a>
+	</div>
 </template>
 <script>
+	import boxWrapCon from './boxWrapCon.vue';
 	export default {
+		components: {
+			boxWrapCon
+		},
 		props: {
+			title: String,
 			imgSrc: String,
 			innerText: String,
-			link: String
+			link: String,
+			urlType: {
+                type: String,
+                default: 'router'
+            }
 		}
 	};
 </script>
-<style scoped>
-	a{
+<style>
+	.box-wrap a{
 		display: block;
 		text-align: center;
 	}
-	.img-wrap{
+	.box-wrap .img-wrap{
 		margin: 0 auto;
 	}
 </style>
