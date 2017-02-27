@@ -44,7 +44,10 @@
 		}
 	};
 </script>
-<style>
+<style lang="less">
+	.box-wrap {
+		background-color: #fff;
+	}
 	.box-wrap a{
 		display: block;
 		text-align: center;

@@ -4,7 +4,7 @@
 		link="/"
 		title="活动"
 		></headerSimple>
-		<section>
+		<section class="activity">
 			<conWrap>
 				<row>
 					<i-col span="24" v-for="list in activityData">
@@ -13,6 +13,7 @@
 						:title="list.titile"
 						:imgSrc="list.imgUrl"
 						:link="list.jumpURL"
+						:innerText="list.timeQuJian"
 						></boxWrap>
 					</i-col>
 				</row>
@@ -65,13 +66,27 @@
 
 	            if (resCode === '0') {
 	                this.statusConfig.loadingConfig = true;
-	                this.activityData = data.list;
+	                this.activityData = this.dealData(data.list);
 	            }
 	        }, (response) => {});
-	    }
+	    },
+		methods: {
+			dealData (data) {
+				for (let i = 0, len = data.length; i < len; i++) {
+					let timeQuJian = data[i].timeQuJian;
+					let timeQuJianArr = timeQuJian.split('_');
+					let timeQuJianArr0 = timeQuJianArr[0].split(' ')[0];
+					let timeQuJianArr1 = timeQuJianArr[1].split(' ')[0];
+					let timeQuJianStr = `活动时间${timeQuJianArr0}至${timeQuJianArr1}`;
+
+					data[i].timeQuJian = timeQuJianStr;
+				}
+				return data;
+			}
+		}
 	};
 </script>
 
-<style>
-
+<style lang="less">
+@import "activity.less";
 </style>
