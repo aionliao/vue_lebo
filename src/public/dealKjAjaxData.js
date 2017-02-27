@@ -16,10 +16,10 @@ function dealKjAjaxData (obj) {
 		orderIndex[listI.gameNo] = i;
 		if (winCode.indexOf(' ') > -1) {
 			let winCodeArr = winCode.split(' ');
-			listI.winCodeFirst = winCodeArr[0].split(',');
-			listI.winCodeSecond = winCodeArr[1].split(',');
+			listI.firstBalls = winCodeArr[0].split(',');
+			listI.secondBalls = winCodeArr[1].split(',');
 		} else {
-			listI.winCodeFirst = winCode.split(',');
+			listI.firstBalls = winCode.split(',');
 		}
 	}
 

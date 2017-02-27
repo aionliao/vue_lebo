@@ -1,5 +1,5 @@
 <template lang="html">
-    <section class="classes">
+    <section class="mt-60" :class="classes">
         <slot></slot>
     </section>
 </template>
@@ -20,8 +20,8 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-    section {
+<style lang="less">
+    .mt-60{
         margin-top: 60px;
     }
 </style>

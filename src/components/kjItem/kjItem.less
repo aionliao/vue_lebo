@@ -1,0 +1,70 @@
+@import "../../styles/mixins/clearfix.less";
+@import "../../styles/mixins/center.less";
+@img-width 						:36px;
+@text-height 					:30px;
+@img-wrap-width 				:46px;
+
+.kj-item h4 span {
+	font-size: 14px;
+	margin-right: 20px;
+}
+.kj-item h4 span:first-child{
+	font-size: 16px;
+}
+.kj-item ol {
+	.clearfix();
+	margin-top: 5px;
+}
+.kj-item ol li{
+	float: left;
+	margin-right: 3px;
+}
+.soccer-ball{
+	position: relative;
+	height: @text-height;
+	margin-top: 10px;
+}
+.kj-item .img-wrap {
+	position: absolute;
+	width: @img-wrap-width;
+	height: @img-wrap-width;
+	background-color: #fff;
+	border-radius: 50%;
+	.centerMidLeft(-5px)
+}
+.kj-item .img-wrap img{
+	position: absolute;
+	width: @img-width;
+	height: @img-width;
+	.centerAll();
+}
+
+.back-zq {
+	position: absolute;
+	width: 86%;
+	top: 0;
+	left: 0;
+	margin-left: @text-height - 4;
+	height: @text-height;
+	line-height: @text-height;
+	text-align: center;
+	font-size: 14px;
+	color: #fff;
+	border-top-right-radius: @text-height/2;
+	border-bottom-right-radius: @text-height/2;
+}
+.back-zq span {
+	position: absolute;
+}
+.back-zq .span-left {
+	left: 30px;
+}
+.back-zq .span-right {
+	right: 30px;
+}
+.jczq .back-zq {
+	background-color: #10c091;
+}
+.jclq .back-zq {
+	background-color: #ff804b;
+}

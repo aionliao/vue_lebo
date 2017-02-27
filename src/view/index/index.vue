@@ -36,7 +36,7 @@
         <!--开奖 start-->
         <section class="kaijiang" id="kj">
     		<h3>最新开奖</h3>
-            <kj></kj>
+            <kjIndex></kjIndex>
             <div class="kaijiang-foot">
     			<span class="icon-pointerleft"></span>
     			<span>左右滑动查看其它彩种</span>
@@ -63,7 +63,7 @@ import subNav from './components/subNav/subNav.vue';
 import notice from './components/notice/notice.vue';
 import red from './components/red/red.vue';
 import fastTz from './components/fastTz/fastTz.vue';
-import kj from './components/kj/kj.vue';
+import kjIndex from './components/kjIndex/kjIndex.vue';
 
 import indexCaiList from '../../config/indexCaiList.js';
 
@@ -79,7 +79,7 @@ export default {
         caiList,
         red,
         fastTz,
-        kj,
+        kjIndex,
         footers,
         icon
     },

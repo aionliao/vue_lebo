@@ -5,19 +5,19 @@
 		title="活动"
 		></headerSimple>
 		<section class="activity">
-			<conWrap>
 				<row>
-					<i-col span="24" v-for="list in activityData">
-						<boxWrap
-						urlType="other"
-						:title="list.titile"
-						:imgSrc="list.imgUrl"
-						:link="list.jumpURL"
-						:innerText="list.timeQuJian"
-						></boxWrap>
-					</i-col>
+						<i-col span="24" v-for="list in activityData">
+							<conWrap>
+								<boxWrap
+								urlType="other"
+								:title="list.titile"
+								:imgSrc="list.imgUrl"
+								:link="list.jumpURL"
+								:innerText="list.timeQuJian"
+								></boxWrap>
+							</conWrap>
+						</i-col>
 				</row>
-			</conWrap>
 		</section>
 	</sectionWrap>
 </template>
