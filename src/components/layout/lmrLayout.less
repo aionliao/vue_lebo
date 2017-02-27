@@ -1,0 +1,18 @@
+@import "../../styles/custom";
+@import "../../styles/mixins/center";
+.lmr-layout {
+	position: relative;
+	width: 100%;
+}
+.lmr-left, .lmr-mid, .lmr-right {
+	position: absolute;
+}
+.lmr-left {
+	.centerMidLeft();
+}
+.lmr-mid {
+	.centerAll();
+}
+.lmr-right {
+	.centerMidRig();
+}
