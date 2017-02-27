@@ -1,5 +1,9 @@
 <template>
-	<button></button>
+	<button :class="classes">{{innerText}}</button>
 </template>
-<script></script>
-<style></style>
+<script>
+	export default {};
+</script>
+<style lang="less">
+@import "iButton.less";
+</style>
