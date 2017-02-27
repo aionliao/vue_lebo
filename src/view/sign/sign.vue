@@ -1,15 +1,15 @@
 <template>
 	<sectionWrap class="sign">
-		<headerSimple
-			link="/"
-			title="签到"
-		></headerSimple>
+		<headerSimple link="/" title="签到"></headerSimple>
 		<div class="lemi-left">
 			<conWrap>
 				<lmrLayout>
 					<template slot="left">我的乐米：<i>{{'4053.60'}}</i>乐米</template>
 				</lmrLayout>
 			</conWrap>
+		</div>
+		<div class="sign-calendar">
+			<calendar></calendar>
 		</div>
 		<div class="sign-info">
 			<conWrap>
@@ -36,7 +36,10 @@
 	import headerSimple from '../../components/headerSimple/headerSimple.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import lmrLayout from '../../components/layout/lmrLayout.vue';
+	import calendar from '../../components/calendar/calendar.vue';
 
+	import vueAjax from '../../public/vueAjax.js';
+	import dealResCode from '../../public/dealResCode.js';
 	export default {
 		components: {
 			sectionWrap,
@@ -44,8 +47,29 @@
 			conWrap,
 			Row,
 			iCol,
-			lmrLayout
-		}
+			lmrLayout,
+			calendar
+		},
+		created () {
+	        vueAjax({
+	            method: 'get',
+	            data: {
+					'userId': '174',
+					'startTime': '2017-02-01',
+					'endTime': '2017-02-28',
+					'transactionType': '10103025'
+				},
+	            that: this
+	        }).then((response) => {
+	            let data = response.body;
+	            let resCode = dealResCode(data.resCode);
+
+	            if (resCode === '0') {
+	                this.statusConfig.carouseLoaded = true;
+	                this.carouseData = data.list;
+	            }
+	        }, (response) => {});
+	    }
 	};
 </script>
 
