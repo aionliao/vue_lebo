@@ -10,7 +10,7 @@
 }
 .float-grid-columns(@class) {
 	.col(@index) { // initial
-		@item: ~"@{col-prefix-cls}-span@{class}-@{index}";
+		@item: ~".@{col-prefix-cls}-span@{class}-@{index}";
 		.col((@index + 1), @item);
 	}
 	.col(@index, @list) when (@index =< @grid-columns) {

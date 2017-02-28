@@ -1,5 +1,5 @@
 <template lang="html">
-    <section class="mt-60" :class="classes">
+    <section :class="classes">
         <slot></slot>
     </section>
 </template>
@@ -10,12 +10,21 @@ export default {
         class: {
             type: String,
             default: ''
+        },
+        mt: {
+            type: [String, Number],
+            default: 60
         }
     },
-    data () {
-        return {
-            classes: this.class
-        };
+    computed: {
+        classes () {
+            return [
+                `mt-${this.mt}`,
+                {
+                    [this.class]: this.class
+                }
+            ];
+        }
     }
 };
 </script>

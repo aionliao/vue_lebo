@@ -1,0 +1,32 @@
+@import "../../styles/custom";
+@import "../../styles/mixins/center";
+.jc-item {
+}
+.jc-item .@{css-prefix}-col {
+    position: relative;
+}
+.center-all {
+    position: absolute;
+    white-space: nowrap;
+    .centerAll();
+}
+.jc-item >.@{css-prefix}-row:first-child{
+    height: 40px;
+    line-height: 40px;
+}
+.jc-item >.@{css-prefix}-row:last-child{
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    background-color: #fff;
+    height: 88px;
+}
+.jc-item >.@{css-prefix}-row:last-child > .@{css-prefix}-col{
+    border-right: 1px solid #e2e2e2;
+    height: 88px;
+}
+.jc-item .@{css-prefix}-col .@{css-prefix}-col {
+    height: 44px;
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+
+}
