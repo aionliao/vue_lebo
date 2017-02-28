@@ -8,5 +8,7 @@ export default {
 	'TC_JQ4': '4场进球',
 	'TC_BQ6': '半全场',
 	'TC_JCLQ': '竞彩篮球',
-	'TC_JCZQ': '竞彩足球'
+	'TC_JCZQ': '竞彩足球',
+	'TC_2X1': '二选一',
+	'TC_1CZS': '一场制胜'
 };

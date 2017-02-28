@@ -8,7 +8,7 @@
  */
 function vueAjax (option) {
     let that = option.that;
-    let method = (option.method).toLowerCase() || 'get';
+    let method = option.method && (option.method).toLowerCase() || 'get';
     let transactionType = option.data.transactionType;
     let getUrl = '/static/data/' + transactionType + '.json';
 
