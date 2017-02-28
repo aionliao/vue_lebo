@@ -19,7 +19,7 @@
 						<p>已经连续签到次数：<i>{{20}}</i>次</p>
 					</template>
 					<template slot="right">
-						<button>签到</button>
+						<i-button type="radius" innerText="签到"></i-button>
 					</template>
 				</lmrLayout>
 			</conWrap>
@@ -37,6 +37,7 @@
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import lmrLayout from '../../components/layout/lmrLayout.vue';
 	import calendar from '../../components/calendar/calendar.vue';
+	import iButton from '../../components/iButton/iButton.vue';
 
 	import vueAjax from '../../public/vueAjax.js';
 	import dealResCode from '../../public/dealResCode.js';
@@ -48,7 +49,8 @@
 			Row,
 			iCol,
 			lmrLayout,
-			calendar
+			calendar,
+			iButton
 		},
 		created () {
 	        vueAjax({
@@ -65,8 +67,8 @@
 	            let resCode = dealResCode(data.resCode);
 
 	            if (resCode === '0') {
-	                this.statusConfig.carouseLoaded = true;
-	                this.carouseData = data.list;
+	                // this.statusConfig.carouseLoaded = true;
+	                // this.carouseData = data.list;
 	            }
 	        }, (response) => {});
 	    }
