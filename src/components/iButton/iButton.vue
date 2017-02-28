@@ -6,12 +6,24 @@
 	const prefixCls = `${prefix}-btn`;
 	export default {
 		props: {
-			type: String,
+			type: {
+				type: String,
+				default: ''
+			},
 			innerText: String
 		},
 		computed: {
 			classes () {
-				return `${prefixCls} ${prefixCls}-${this.type}`;
+				let classes = prefixCls;
+				let typeArr = this.type.split('-');
+
+				console.log('typeArr');
+				console.log(typeArr);
+				for (let i = 0, len = typeArr.length; i < len; i++) {
+					let classesI = ` ${prefixCls}-${typeArr[i]}`;
+					classes += classesI;
+				}
+				return classes;
 			}
 		}
 	};

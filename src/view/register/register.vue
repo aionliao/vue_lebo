@@ -1,20 +1,18 @@
 <template>
 	<section class="login">
-		<headerSimple link="/" title="登录"></headerSimple>
+		<headerSimple link="/" title="注册"></headerSimple>
 		<div class="login-input-area">
-			<inputArea iconType="yonghuming" inputType="text" placeholder="输入手机号/用户名"></inputArea>
-			<inputArea iconType="mima" type="password" placeholder="输入您的密码"></inputArea>
+			<inputArea iconType="yonghuming" inputType="text" placeholder="4-12个字符或下划线，不能全部为数字"></inputArea>
+			<inputArea iconType="mima" type="password" placeholder="请输入6-16个字符"></inputArea>
+			<inputArea iconType="mima" type="password" placeholder="请确认密码"></inputArea>
+		</div>
+		<div class="login-input-area">
+			<inputArea iconType="peiziiconfont09" inputType="text" placeholder="请输入手机号"></inputArea>
+			<inputArea iconType="yanzhengma" type="password" placeholder="请输入验证码"></inputArea>
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<i-button innerText="登录" type="radius"></i-button>
-			</conWrap>
-		</div>
-		<div class="login-btn-area">
-			<conWrap>
-				<router-link to="/register">
-					<i-button innerText="注册" type="white-radius"></i-button>
-				</router-link>
+				<i-button innerText="注册" type="radius"></i-button>
 			</conWrap>
 		</div>
 		<conWrap>
@@ -45,5 +43,5 @@
 </script>
 
 <style lang="less">
-	@import "login.less";
+	@import "./register.less";
 </style>

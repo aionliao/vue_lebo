@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import index from '../view/index/index.vue';
 import login from '../view/login/login.vue';
+import register from '../view/register/register.vue';
 import activity from '../view/activity/activity.vue';
 import jc from '../view/jc/jc.vue';
 import more from '../view/more/more.vue';
@@ -47,6 +48,11 @@ export default new Router({
             path: '/user/sign',
             name: 'sign',
             component: sign
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: register
         },
         {
             path: '/kj',
