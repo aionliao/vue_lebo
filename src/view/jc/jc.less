@@ -1,6 +1,30 @@
 @import "../../styles/custom";
 @import "../../styles/mixins/center";
+@jc-item-height: 90px;
+@jc-title-height: 40px;
+@jc-gather-height: 38px;
+@jc-sp-height: @jc-item-height / 2;
+@jc-border-color: #e2e2e2;
+@jc-letscore-gray: #c9c9c9;
+@jc-letscore-green: #68d268;
+@jc-letscore-red: #f76665;
+
+.jc-wrap {
+    margin-bottom: 60px;
+}
+.jc-wrap li{
+    margin-bottom: 15px;
+}
+.jc-gather {
+    font-size: @font-size-base;
+    background-color: #fff;
+}
+.jc-gather .lmr-layout {
+    height: @jc-gather-height;
+    line-height: @jc-gather-height;
+}
 .jc-item {
+    font-size: @font-size-base;
 }
 .jc-item .@{css-prefix}-col {
     position: relative;
@@ -10,23 +34,58 @@
     white-space: nowrap;
     .centerAll();
 }
-.jc-item >.@{css-prefix}-row:first-child{
-    height: 40px;
-    line-height: 40px;
+.jc-title{
+    height: @jc-title-height;
+    line-height: @jc-title-height;
 }
-.jc-item >.@{css-prefix}-row:last-child{
-    border-top: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;
+.jc-con{
     background-color: #fff;
-    height: 88px;
+    height: @jc-item-height;
 }
-.jc-item >.@{css-prefix}-row:last-child > .@{css-prefix}-col{
-    border-right: 1px solid #e2e2e2;
-    height: 88px;
-}
-.jc-item .@{css-prefix}-col .@{css-prefix}-col {
-    height: 44px;
-    border-right: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;
 
+.game-info, .jc-choose{
+    height: @jc-item-height;
+}
+.game-info, .jc-choose, .jc-letscore > div, .jc-sp > div{
+    border-right: 1px solid @jc-border-color;
+    border-top: 1px solid @jc-border-color;
+    border-bottom: 1px solid @jc-border-color;
+}
+.jc-letscore > div, .jc-sp > div{
+    height: @jc-sp-height;
+}
+.jc-letscore > div:last-child, .jc-sp > div:last-child {
+    border-top: none;
+}
+
+.game-info {
+    color: @text-grap;
+    font-size: @font-size-small;
+}
+.game-info p:first-child {
+    font-size: @font-size-base;
+    color: @text-color;
+}
+.game-info .@{css-prefix}-icon {
+    color: @text-grap;
+    font-size: 16px;
+}
+.jc-letscore .@{css-prefix}-col {
+    color: #fff;
+    background-color: @jc-letscore-gray
+}
+.jc-letscore .@{css-prefix}-col.green {
+    background-color: @jc-letscore-green
+}
+.jc-letscore .@{css-prefix}-col.red {
+    background-color: @jc-letscore-red
+}
+
+.jc-sp {
+    font-size: @font-size-small;
+}
+.jc-sp em{
+    font-size: @font-size-base;
+    font-weight: @weight-bold;
+    margin-right: 4px;
 }

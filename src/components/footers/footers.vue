@@ -1,6 +1,6 @@
 <template lang="html">
 	<div>
-		<footer class="footer">
+		<footer>
             <div class="footer-link">
                 <p>全国客服热线：<a href="tel:010-65617701">010-65617701</a></p>
             </div>
