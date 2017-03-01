@@ -10,6 +10,10 @@ function vueAjax (option) {
     let that = option.that;
     let method = option.method && (option.method).toLowerCase() || 'get';
     let transactionType = option.data.transactionType;
+
+    if (transactionType === '10103017') {
+        transactionType = `${transactionType}_${option.data.gameNo}`;
+    }
     let getUrl = '/static/data/' + transactionType + '.json';
 
     let ajaxObject = {
