@@ -24,6 +24,7 @@
 		methods: {
 			reverseCurrent () {
 				this.isCurrent = !this.isCurrent;
+				this.$emit('reverseCurrent', this.isCurrent ? 1 : -1);
 			}
 		}
 	};

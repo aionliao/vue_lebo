@@ -20,17 +20,7 @@
 				</div>
 			</i-col>
 			<i-col span="19">
-				<row>
-					<i-col span="20">
-						<sp-con></sp-con>
-					</i-col>
-					<i-col span="4" class="jc-choose">
-						<div class="center-all">
-							更多<br>
-							选项
-						</div>
-					</i-col>
-				</row>
+				<sp-con></sp-con>
 			</i-col>
 		</row>
 	</div>

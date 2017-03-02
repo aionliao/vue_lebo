@@ -1,29 +1,43 @@
 <template lang="html">
-    <div>
-        <template v-for="obj in objs">
-            <h3 v-if="obj.title">{{obj.title}}</h3>
-            <row>
-                <i-col :span="letScoreCol" v-if="obj.letScore">
-                    <row class="jc-letscore" v-for="letScore in obj.letScore" >
-                        <i-col span="24" :class="letScore.className">
-                            <div class="center-all">{{letScore.score}}</div>
-                        </i-col>
-                    </row>
-                </i-col>
-                <i-col :span="24 - letScoreCol">
+        <row>
+            <i-col span="20">
+                <template v-for="obj in objs">
+                    <h3 v-if="obj.title">{{obj.title}}</h3>
                     <row>
-                        <i-col span="24" v-for="(con, conIndex) in obj.con" :class="[conIndex === obj.con.length - 1 ? 'no-border-top' : '']">
-                            <row class="jc-sp">
-                                <i-col :span="con.conSpanCol" v-for="showData in con.showData">
-                                    <spItem :spData="showData"></spItem>
+                        <i-col :span="letScoreCol" v-if="obj.letScore">
+                            <row class="jc-letscore" v-for="letScore in obj.letScore" >
+                                <i-col span="24" :class="letScore.className">
+                                    <div class="center-all">{{letScore.score}}</div>
+                                </i-col>
+                            </row>
+                        </i-col>
+                        <i-col :span="24 - letScoreCol">
+                            <row>
+                                <i-col span="24" v-for="(con, conIndex) in obj.con" :class="[conIndex === obj.con.length - 1 ? 'no-border-top' : '']">
+                                    <row class="jc-sp">
+                                        <i-col :span="con.conSpanCol" v-for="showData in con.showData">
+                                            <spItem @reverseCurrent="addChooseNums" :spData="showData"></spItem>
+                                        </i-col>
+                                    </row>
                                 </i-col>
                             </row>
                         </i-col>
                     </row>
-                </i-col>
-            </row>
-        </template>
-    </div>
+                </template>
+
+            </i-col>
+            <i-col span="4" class="jc-choose">
+                <div class="center-all">
+                    <template v-if="chooseNums">
+                        已选<br>
+                        {{chooseNums}}项
+                    </template>
+                    <template v-else>
+                        更多<br>选项
+                    </template>
+                </div>
+            </i-col>
+        </row>
 </template>
 
 <script>
@@ -39,7 +53,7 @@ export default {
     data () {
         return {
             letScoreCol: 2,
-
+            chooseNums: 0,
             objs: [
                 {
                     // title: '胜平负/让球',
@@ -100,6 +114,12 @@ export default {
         };
     },
     methods: {
+        addChooseNums (num) {
+            console.log('sad');
+            console.log('num: ' + num);
+            this.chooseNums += num;
+            console.log(this.chooseNums);
+        }
     }
 
 };
