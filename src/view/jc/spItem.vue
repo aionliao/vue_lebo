@@ -1,71 +1,47 @@
-<template lang="html">
-    <div class="">
-        <row>
-            <i-col span="2">
-                <row class="jc-letscore">
-                    <i-col span="24">
-                        <div class="center-all">
-                            0
-                        </div>
-                    </i-col>
-                    <i-col span="24" :class="letScoreClass">
-                        <div class="center-all">
-                            {{dealLetscore}}
-                        </div>
-                    </i-col>
-                </row>
-            </i-col>
-            <i-col span="22">
-                <row>
-                    <i-col span="24">
-                        <row class="jc-sp">
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                        </row>
-                    </i-col>
-                    <i-col span="24">
-                        <row class="jc-sp">
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                            <i-col span="8">
-                                <div class="center-all">
-                                    <em>胜</em>{{spObj.TC_JZSPF['3']}}
-                                </div>
-                            </i-col>
-                        </row>
-                    </i-col>
-
-                </row>
-            </i-col>
-        </row>
-    </div>
+<template>
+	<div class="sp-item" :class="{'current': isCurrent}" @click="reverseCurrent">
+		<div class="center-all" >
+			<em>{{spData.code}}</em>
+			<template v-if="emType === 0">{{spData.sp}}</template>
+			<template v-if="emType === 1"><p>{{spData.sp}}</p></template>
+		</div>
+	</div>
 </template>
-
 <script>
-export default {
-};
+	export default {
+		props: {
+			emType: {
+	            type: [Number],
+	            default: 0
+	        },
+			spData: Object
+		},
+		data () {
+			return {
+				isCurrent: false
+			};
+		},
+		methods: {
+			reverseCurrent () {
+				this.isCurrent = !this.isCurrent;
+			}
+		}
+	};
 </script>
-
 <style lang="less">
+@import "../../styles/custom";
+.sp-item {
+    font-size: @font-size-small;
+	width: 100%;
+	height: 100%;
+}
+.sp-item em{
+    font-size: @font-size-base;
+    font-weight: @weight-bold;
+    margin-right: 4px;
+}
+.sp-item.current{
+    color: #fff;
+    background-color: @color-base;
+}
 </style>

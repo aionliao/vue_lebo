@@ -1,5 +1,5 @@
 <template>
-	<button :class="classes">{{innerText}}</button>
+	<button :class="classes"><slot></slot></button>
 </template>
 <script>
 	import prefix from '../../config/prefix.js';
@@ -9,8 +9,7 @@
 			type: {
 				type: String,
 				default: ''
-			},
-			innerText: String
+			}
 		},
 		computed: {
 			classes () {

@@ -12,7 +12,7 @@
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<i-button innerText="注册" type="radius"></i-button>
+				<i-button type="radius">注册</i-button>
 			</conWrap>
 		</div>
 		<conWrap>

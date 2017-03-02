@@ -22,106 +22,7 @@
 			<i-col span="19">
 				<row>
 					<i-col span="20">
-						<row>
-							<i-col span="2">
-								<row class="jc-letscore">
-									<i-col span="24">
-										<div class="center-all">
-											0
-										</div>
-									</i-col>
-									<i-col span="24" :class="letScoreClass">
-										<div class="center-all">
-											{{dealLetscore}}
-										</div>
-									</i-col>
-								</row>
-							</i-col>
-							<i-col span="22">
-								<row>
-									<i-col span="24">
-										<row class="jc-sp">
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-										</row>
-									</i-col>
-									<i-col span="24">
-										<row class="jc-sp">
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-											<i-col span="8">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-										</row>
-									</i-col>
-									<!-- <i-col span="8">
-										<row class="jc-sp">
-											<i-col span="24">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZSPF['3']}}
-												</div>
-											</i-col>
-											<i-col span="24">
-												<div class="center-all">
-													<em>胜</em>{{spObj.TC_JZXSPF['3']}}
-												</div>
-											</i-col>
-										</row>
-									</i-col>
-									<i-col span="8">
-										<row class="jc-sp">
-											<i-col span="24">
-												<div class="center-all">
-													<em>平</em>{{spObj.TC_JZSPF['1']}}
-												</div>
-											</i-col>
-											<i-col span="24">
-												<div class="center-all">
-													<em>平</em>{{spObj.TC_JZXSPF['1']}}
-												</div>
-											</i-col>
-										</row>
-									</i-col>
-									<i-col span="8">
-										<row class="jc-sp">
-											<i-col span="24">
-												<div class="center-all">
-													<em>负</em>{{spObj.TC_JZSPF['0']}}
-												</div>
-											</i-col>
-											<i-col span="24">
-												<div class="center-all">
-													<em>负</em>{{spObj.TC_JZXSPF['1']}}
-												</div>
-											</i-col>
-										</row>
-									</i-col> -->
-								</row>
-							</i-col>
-						</row>
+						<sp-con></sp-con>
 					</i-col>
 					<i-col span="4" class="jc-choose">
 						<div class="center-all">
@@ -137,6 +38,7 @@
 <script>
 	import { Row, iCol } from '../../components/layout/index.js';
 	import icon from '../../components/icon/icon.vue';
+	import spCon from './spCon.vue';
 	export default {
 		props: {
 			matchList: Object,
@@ -145,7 +47,8 @@
 		components: {
 			Row,
 			iCol,
-			icon
+			icon,
+			spCon
 		},
 		computed: {
 			dealLetscore () {

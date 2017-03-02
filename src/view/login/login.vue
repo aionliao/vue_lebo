@@ -7,13 +7,13 @@
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<i-button innerText="登录" type="radius"></i-button>
+				<i-button type="radius">登录</i-button>
 			</conWrap>
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
 				<router-link to="/register">
-					<i-button innerText="注册" type="white-radius"></i-button>
+					<i-button type="white-radius">注册</i-button>
 				</router-link>
 			</conWrap>
 		</div>

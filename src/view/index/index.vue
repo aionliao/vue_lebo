@@ -113,6 +113,9 @@ export default {
                 this.carouseData = data.list;
             }
         }, (response) => {});
+    },
+    methods: {
+
     }
 }
 </script>

@@ -28,7 +28,7 @@
             </template>
         </li>
     </ul>
-    <fixedFooter class="border-top">
+    <fixedFooter class="border-top" @click="greet">
         <conWrap class="center-all">
             <row type="flex">
                 <i-col span="4">
@@ -44,7 +44,7 @@
                     </template>
                 </i-col>
                 <i-col span="6">
-                    <i-button innerText="选好了" type="radius"></i-button>
+                    <i-button type="radius">选好了</i-button>
                 </i-col>
             </row>
         </conWrap>
@@ -137,7 +137,9 @@ export default {
         }
     },
     methods: {
-
+        greet () {
+            alert('greet');
+        }
     }
 };
 </script>

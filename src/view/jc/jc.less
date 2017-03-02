@@ -30,7 +30,6 @@
     position: relative;
 }
 .center-all {
-    position: absolute;
     white-space: nowrap;
     .centerAll();
 }
@@ -51,12 +50,13 @@
     border-top: 1px solid @jc-border-color;
     border-bottom: 1px solid @jc-border-color;
 }
+.jc-letscore > div:last-child, .no-border-top .jc-sp > div{
+    border-top: none;
+}
 .jc-letscore > div, .jc-sp > div{
     height: @jc-sp-height;
 }
-.jc-letscore > div:last-child, .jc-sp > div:last-child {
-    border-top: none;
-}
+
 
 .game-info {
     color: @text-grap;
@@ -79,13 +79,4 @@
 }
 .jc-letscore .@{css-prefix}-col.red {
     background-color: @jc-letscore-red
-}
-
-.jc-sp {
-    font-size: @font-size-small;
-}
-.jc-sp em{
-    font-size: @font-size-base;
-    font-weight: @weight-bold;
-    margin-right: 4px;
 }

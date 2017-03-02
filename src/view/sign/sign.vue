@@ -19,7 +19,7 @@
 						<p>已经连续签到次数：<i>{{20}}</i>次</p>
 					</template>
 					<template slot="right">
-						<i-button type="radius" innerText="签到"></i-button>
+						<i-button type="radius">签到</i-button>
 					</template>
 				</lmrLayout>
 			</conWrap>
