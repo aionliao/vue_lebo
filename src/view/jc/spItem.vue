@@ -1,5 +1,5 @@
 <template>
-	<div class="sp-item" :class="{'current': isCurrent}" @click="reverseCurrent">
+	<div class="filled" :class="{'current': isCurrent}" @click="reverseCurrent">
 		<div class="center-all" >
 			<em>{{spData.code}}</em>
 			<template v-if="emType === 0">{{spData.sp}}</template>
@@ -14,7 +14,8 @@
 	            type: [Number],
 	            default: 0
 	        },
-			spData: Object
+			spData: Object,
+			clear: Number
 		},
 		data () {
 			return {
@@ -26,22 +27,25 @@
 				this.isCurrent = !this.isCurrent;
 				this.$emit('reverseCurrent', this.isCurrent ? 1 : -1);
 			}
+		},
+		watch: {
+			clear () {
+				this.isCurrent = false;
+			}
 		}
 	};
 </script>
-<style lang="less">
+<style lang="less" scoped>
 @import "../../styles/custom";
-.sp-item {
+.filled {
     font-size: @font-size-small;
-	width: 100%;
-	height: 100%;
 }
-.sp-item em{
+.filled em{
     font-size: @font-size-base;
     font-weight: @weight-bold;
     margin-right: 4px;
 }
-.sp-item.current{
+.filled.current{
     color: #fff;
     background-color: @color-base;
 }

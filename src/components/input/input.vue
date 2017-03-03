@@ -5,6 +5,7 @@
 		:placeholder="placeholder"
 		:class="inputClasses"
 		:disable="disable"
+		:value="value"
 	/>
 </template>
 <script>
@@ -20,6 +21,10 @@
 					return oneOf(value, ['text', 'tel', 'password']);
 				},
 				default: 'text'
+			},
+			value: {
+				type: [Number, String],
+				default: ''
 			},
 			disable: {
 				type: Boolean,
@@ -42,5 +47,14 @@
 	};
 </script>
 <style lang="less">
-@import "input.less";
+@import "../../styles/custom";
+
+.@{css-prefix}-input {
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	width: 100%;
+	font-size: 14px;
+	color: @text-grap;
+}
 </style>

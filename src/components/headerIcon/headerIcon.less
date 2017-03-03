@@ -1,4 +1,5 @@
 @import '../../styles/custom.less';
+@import '../../styles/mixins/center.less';
 @prefixCls  : header-icon;
 @width      : 50px;
 .@{prefixCls} {
@@ -8,12 +9,7 @@
     top: 0;
 }
 .@{prefixCls} .@{css-prefix}-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    font-size: 22px;
+    .centerAll();
     color: #fff;
 }
 .@{prefixCls}-left-1 {

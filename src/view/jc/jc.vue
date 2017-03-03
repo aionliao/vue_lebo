@@ -1,9 +1,8 @@
 <template>
     <sectionWrap mt="50">
-
         <headers>
             <router-link to="/">
-                <headerIcon type="left-1" iconType="zuo"></headerIcon>
+                <headerIcon type="left-1" iconType="arrow-left"></headerIcon>
             </router-link>
             <h2>{{gameNoShow}}</h2>
     </headers>
@@ -18,13 +17,13 @@
                             <span>{{jcData.matchList.length}}场比赛可投</span>
                         </template>
                         <template slot="right">
-                            <icon type="jiantou"></icon>
+                            <icon type="arrow-down"></icon>
                         </template>
                     </lmrLayout>
                 </conWrap>
             </div>
             <template v-for="matchListI in jcData.matchList">
-                <jcItem :week="jcData.week" :matchList="matchListI"></jcItem>
+                <jcItem :clear="clear" @tzNum="getTzNum" :week="jcData.week" :matchList="matchListI"></jcItem>
             </template>
         </li>
     </ul>
@@ -32,16 +31,25 @@
         <conWrap class="center-all">
             <row type="flex">
                 <i-col span="4">
-                    <div class="center-all mid-size">
-                        <icon type="shanchu" class="icon-font-big"></icon>
+                    <div class="center-all mid-size" @click="clearTzNum">
+                        <icon type="delete"></icon>
                         <p>删除</p>
                     </div>
                 </i-col>
                 <i-col span="14">
-                    <template>
-                        <p>已选择<span class="text-base-color">{{0}}</span>场</p>
-                        <p class="text-grap">请至少选择{{2}}场比赛</p>
-                    </template>
+                    <div class="filled" v-if="tzNum < minTzNum">
+                        <div class="center-all">
+                            <p>已选择<span class="text-base-color">{{tzNum}}</span>场</p>
+                            <p class="text-grap">请至少选择{{minTzNum}}场比赛</p>
+                        </div>
+                    </div>
+                        <row type="" class="center-all" v-else>
+                            <i-col span="7"></i-col>
+                            <i-col span="14">
+                                <inputSubPlus value="5"></inputSubPlus>
+                            </i-col>
+                            <i-col span="3">倍</i-col>
+                        </row>
                 </i-col>
                 <i-col span="6">
                     <i-button type="radius">选好了</i-button>
@@ -54,6 +62,7 @@
 <script>
 import headers from '../../components/headers/headers.vue';
 import headerIcon from '../../components/headerIcon/headerIcon.vue';
+import inputSubPlus from '../../components/input/inputSubPlus.vue';
 import icon from '../../components/icon/icon.vue';
 import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';
 import conWrap from '../../components/conWrap/conWrap.vue';
@@ -68,6 +77,12 @@ import vueAjax from '../../public/vueAjax.js';
 import dealResCode from '../../public/dealResCode.js';
 
 export default {
+    props: {
+        minTzNum: {
+            type: Number,
+            default: 2
+        }
+    },
     components: {
         headers,
         headerIcon,
@@ -79,14 +94,17 @@ export default {
         conWrap,
         iButton,
         fixedFooter,
-        jcItem
+        jcItem,
+        inputSubPlus
     },
     data () {
         return {
             statusConfig: {
                 loaded: false
             },
-            jcData: []
+            jcData: [],
+            tzNum: 0,
+            clear: 0
         };
     },
     created () {
@@ -139,6 +157,12 @@ export default {
     methods: {
         greet () {
             alert('greet');
+        },
+        getTzNum (num) {
+            this.tzNum += num;
+        },
+        clearTzNum () {
+            this.clear += 1;
         }
     }
 };

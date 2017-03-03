@@ -16,7 +16,7 @@
                                 <i-col span="24" v-for="(con, conIndex) in obj.con" :class="[conIndex === obj.con.length - 1 ? 'no-border-top' : '']">
                                     <row class="jc-sp">
                                         <i-col :span="con.conSpanCol" v-for="showData in con.showData">
-                                            <spItem @reverseCurrent="addChooseNums" :spData="showData"></spItem>
+                                            <spItem :clear="clear" @reverseCurrent="addChooseNums" :spData="showData"></spItem>
                                         </i-col>
                                     </row>
                                 </i-col>
@@ -27,14 +27,16 @@
 
             </i-col>
             <i-col span="4" class="jc-choose">
-                <div class="center-all">
-                    <template v-if="chooseNums">
-                        已选<br>
-                        {{chooseNums}}项
-                    </template>
-                    <template v-else>
-                        更多<br>选项
-                    </template>
+                <div class="filled" :class="{'current select-bottom-icon': chooseNums}">
+                    <div class="center-all">
+                        <template v-if="chooseNums">
+                            已选<br>
+                            {{chooseNums}}项
+                        </template>
+                        <template v-else>
+                            更多<br>选项
+                        </template>
+                    </div>
                 </div>
             </i-col>
         </row>
@@ -45,6 +47,9 @@ import spItem from './spItem.vue';
 
 import { Row, iCol } from '../../components/layout/index.js';
 export default {
+    props: {
+        clear: Number
+    },
     components: {
         Row,
         iCol,
@@ -115,15 +120,28 @@ export default {
     },
     methods: {
         addChooseNums (num) {
-            console.log('sad');
-            console.log('num: ' + num);
             this.chooseNums += num;
-            console.log(this.chooseNums);
+        }
+    },
+    watch: {
+        chooseNums (val, oldVal) {
+            if (val > 0 && oldVal === 0) {
+                this.$emit('tzNum', 1);
+            } else if (val === 0 && oldVal > 0) {
+                this.$emit('tzNum', -1);
+            }
+        },
+        clear () {
+            this.chooseNums = 0;
         }
     }
 
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+@import "../../styles/custom";
+.filled.current{
+    color:@color-base;
+}
 </style>

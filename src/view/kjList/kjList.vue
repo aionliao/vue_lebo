@@ -9,7 +9,7 @@
 				<router-link :to="'/kj/' + kjData.gameNo">
 					<conWrap>
 						<kjItem :obj="kjData">
-							<icon type="you"></icon>
+							<icon type="arrow-right"></icon>
 						</kjItem>
 					</conWrap>
 				</router-link>

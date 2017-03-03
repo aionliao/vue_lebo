@@ -20,7 +20,7 @@
 				</div>
 			</i-col>
 			<i-col span="19">
-				<sp-con></sp-con>
+				<sp-con :clear="clear" @tzNum="tzNum"></sp-con>
 			</i-col>
 		</row>
 	</div>
@@ -32,7 +32,8 @@
 	export default {
 		props: {
 			matchList: Object,
-			week: String
+			week: String,
+			clear: Number
 		},
 		components: {
 			Row,
@@ -71,7 +72,10 @@
 	                }
 	            }
 	            return spObj;
-	        }
+	        },
+			tzNum (num) {
+				this.$emit('tzNum', num);
+			}
 		}
 	};
 </script>
