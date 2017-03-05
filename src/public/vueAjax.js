@@ -14,7 +14,7 @@ function vueAjax (option) {
     if (transactionType === '10103017') {
         transactionType = `${transactionType}_${option.data.gameNo}`;
     }
-    let getUrl = '/static/data/' + transactionType + '.json';
+    let getUrl = './static/data/' + transactionType + '.json';
 
     let ajaxObject = {
         'get': () => {

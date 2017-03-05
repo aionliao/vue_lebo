@@ -51,7 +51,7 @@
                             </span>
                         </i-col>
                         <i-col span="16">
-                            <inputSubPlus :value="5"></inputSubPlus>
+                            <inputSubPlus :value="5">倍</inputSubPlus>
                         </i-col>
                     </row>
                 </i-col>

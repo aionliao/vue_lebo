@@ -2,6 +2,8 @@
 
 > 使用Vue2.0重写乐博项目
 
+[项目demo地址](http://vgsir.com/demos/)
+
 ## Build Setup
 
 ``` bash

@@ -15,7 +15,7 @@
                     </a>
                 </carouse-item>
             </carouse>
-            <img v-else :src="'/static/img/lazy-head.jpg'"></li>
+            <img v-else :src="'./static/img/lazy-head.jpg'"></li>
         </div>
         <subNav></subNav>
         <notice></notice>
@@ -90,8 +90,8 @@ export default {
             },
             indexCaiList: indexCaiList,
             carouseData: [],
-            disportImgUrl: '/static/img/disport.png',
-            imgUrl: '/static/img/logo.jpg'
+            disportImgUrl: './static/img/disport.png',
+            imgUrl: './static/img/logo.jpg'
         }
     },
     created () {
