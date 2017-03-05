@@ -1,11 +1,13 @@
 <template>
 	<input
+		ref="input"
 		:type="type"
 		:name="name"
 		:placeholder="placeholder"
 		:class="inputClasses"
 		:disable="disable"
 		:value="value"
+		@input="updateVal"
 	/>
 </template>
 <script>
@@ -30,6 +32,7 @@
 				type: Boolean,
 				default: false
 			},
+			maxValue: Number,
 			name: String,
 			placeholder: String
 		},
@@ -42,6 +45,19 @@
 						[`${prefixCls}-disable`]: !!this.disable
 					}
 				];
+			}
+		},
+		methods: {
+			updateVal () {
+				// console.log('input');
+				// console.log(this.$refs.input.value);
+				let valNow = this.$refs.input.value;
+				// console.log('this.maxValue');
+				// console.log(this.maxValue);
+				if (this.maxValue && valNow >= this.maxValue) {
+					this.$refs.input.value = this.maxValue;
+				}
+				this.$emit('input', this.$refs.input.value);
 			}
 		}
 	};

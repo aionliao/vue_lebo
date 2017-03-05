@@ -12,6 +12,7 @@
 	export default {
 		props: {
 			type: {
+				type: String,
 				validator (value) {
 					return oneOf(value, ['flex']);
 				}

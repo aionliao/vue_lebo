@@ -43,16 +43,20 @@
                             <p class="text-grap">请至少选择{{minTzNum}}场比赛</p>
                         </div>
                     </div>
-                        <row type="" class="center-all" v-else>
-                            <i-col span="7"></i-col>
-                            <i-col span="14">
-                                <inputSubPlus value="5"></inputSubPlus>
-                            </i-col>
-                            <i-col span="3">倍</i-col>
-                        </row>
+                    <row class="mt-5 tz-info"  type="flex" v-else>
+                        <i-col span="8">
+                            <span class="chun">
+                                <i-sub>{{tzNum}}</i-sub>
+                                {{chooseChun}}
+                            </span>
+                        </i-col>
+                        <i-col span="16">
+                            <inputSubPlus :value="5"></inputSubPlus>
+                        </i-col>
+                    </row>
                 </i-col>
                 <i-col span="6">
-                    <i-button type="radius">选好了</i-button>
+                    <i-button  type="radius">选好了</i-button>
                 </i-col>
             </row>
         </conWrap>
@@ -61,6 +65,7 @@
 
 <script>
 import headers from '../../components/headers/headers.vue';
+import iSub from '../../components/sub/sub.vue';
 import headerIcon from '../../components/headerIcon/headerIcon.vue';
 import inputSubPlus from '../../components/input/inputSubPlus.vue';
 import icon from '../../components/icon/icon.vue';
@@ -95,7 +100,8 @@ export default {
         iButton,
         fixedFooter,
         jcItem,
-        inputSubPlus
+        inputSubPlus,
+        iSub
     },
     data () {
         return {
@@ -104,7 +110,8 @@ export default {
             },
             jcData: [],
             tzNum: 0,
-            clear: 0
+            clear: 0,
+            chooseChun: '2串1'
         };
     },
     created () {

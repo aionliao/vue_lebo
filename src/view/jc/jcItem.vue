@@ -16,7 +16,7 @@
 					<p>{{matchList.matchName}}</p>
 					<p>{{week}}{{matchList.matchSort}}</p>
 					<p>20：50截止</p>
-					<p><icon type="jiantou"></icon></p>
+					<p><icon type="arrow-down"></icon></p>
 				</div>
 			</i-col>
 			<i-col span="19">
