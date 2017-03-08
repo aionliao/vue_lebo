@@ -1,4 +1,5 @@
 # vue_for_lebo
+[![Build Status](https://travis-ci.org/lzkui2013/vue_lebo.svg?branch=master)](https://travis-ci.org/lzkui2013/vue_lebo)
 
 > 使用Vue2.0重写乐博项目
 

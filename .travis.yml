@@ -2,3 +2,5 @@ language: node_js
 node_js: stable
 script:
   - npm run unit
+after_success:
+- cat ./test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls
