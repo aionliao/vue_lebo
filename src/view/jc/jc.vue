@@ -5,62 +5,63 @@
                 <headerIcon type="left-1" iconType="arrow-left"></headerIcon>
             </router-link>
             <h2>{{gameNoShow}}</h2>
-    </headers>
-    <ul class="jc-wrap">
-        <li v-for="jcData in dealedJcData" v-if="statusConfig.loaded">
-            <div class="jc-gather">
-                <conWrap>
-                    <lmrLayout type="left-right">
-                        <template slot="left">
-                            <span>{{jcData.time}}</span>
-                            <span>{{jcData.week}}</span>
-                            <span>{{jcData.matchList.length}}场比赛可投</span>
-                        </template>
-                        <template slot="right">
-                            <icon type="arrow-down"></icon>
-                        </template>
-                    </lmrLayout>
-                </conWrap>
-            </div>
-            <template v-for="matchListI in jcData.matchList">
-                <jcItem :clear="clear" @tzNum="getTzNum" :week="jcData.week" :matchList="matchListI"></jcItem>
-            </template>
-        </li>
-    </ul>
-    <fixedFooter class="border-top" @click="greet">
-        <conWrap class="center-all">
-            <row type="flex">
-                <i-col span="4">
-                    <div class="center-all mid-size" @click="clearTzNum">
-                        <icon type="delete"></icon>
-                        <p>删除</p>
-                    </div>
-                </i-col>
-                <i-col span="14">
-                    <div class="filled" v-if="tzNum < minTzNum">
-                        <div class="center-all">
-                            <p>已选择<span class="text-base-color">{{tzNum}}</span>场</p>
-                            <p class="text-grap">请至少选择{{minTzNum}}场比赛</p>
+        </headers>
+        <ul class="jc-wrap">
+            <li v-for="jcData in dealedJcData" v-if="statusConfig.loaded">
+                <div class="jc-gather">
+                    <conWrap>
+                        <lmrLayout type="left-right">
+                            <template slot="left">
+                                <span>{{jcData.time}}</span>
+                                <span>{{jcData.week}}</span>
+                                <span>{{jcData.matchList.length}}场比赛可投</span>
+                            </template>
+                            <template slot="right">
+                                <icon type="arrow-down"></icon>
+                            </template>
+                        </lmrLayout>
+                    </conWrap>
+                </div>
+                <template v-for="matchListI in jcData.matchList">
+                    <jcItem :clear="clear" @tzNum="getTzNum" :week="jcData.week" :matchList="matchListI"></jcItem>
+                </template>
+            </li>
+        </ul>
+        <fixedFooter class="border-top" @click="greet">
+            <conWrap class="center-all">
+                <row type="flex">
+                    <i-col span="4">
+                        <div class="center-all mid-size" @click="clearTzNum">
+                            <icon type="delete"></icon>
+                            <p>删除</p>
                         </div>
-                    </div>
-                    <row class="mt-5 tz-info"  type="flex" v-else>
-                        <i-col span="8">
-                            <span class="chun">
-                                <i-sub>{{tzNum}}</i-sub>
-                                {{chooseChun}}
-                            </span>
-                        </i-col>
-                        <i-col span="16">
-                            <inputSubPlus :value="5">倍</inputSubPlus>
-                        </i-col>
-                    </row>
-                </i-col>
-                <i-col span="6">
-                    <i-button  type="radius">选好了</i-button>
-                </i-col>
-            </row>
-        </conWrap>
-    </fixedFooter>
+                    </i-col>
+                    <i-col span="14">
+                        <div class="filled" v-if="tzNum < minTzNum">
+                            <div class="center-all">
+                                <p>已选择<span class="text-base-color">{{tzNum}}</span>场</p>
+                                <p class="text-grap">请至少选择{{minTzNum}}场比赛</p>
+                            </div>
+                        </div>
+                        <row class="mt-5 tz-info"  type="flex" v-else>
+                            <i-col span="8">
+                                <span class="chun">
+                                    <i-sub>{{tzNum}}</i-sub>
+                                    {{chooseChun}}
+                                </span>
+                            </i-col>
+                            <i-col span="16">
+                                <inputSubPlus :value="5">倍</inputSubPlus>
+                            </i-col>
+                        </row>
+                    </i-col>
+                    <i-col span="6">
+                        <i-button  type="radius">选好了</i-button>
+                    </i-col>
+                </row>
+            </conWrap>
+        </fixedFooter>
+    </sectionWrap>
 </template>
 
 <script>
