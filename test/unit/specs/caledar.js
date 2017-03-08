@@ -10,13 +10,8 @@ function getRenderedText (component, propsData) {
 describe('sub.vue', () => {
 	// 检查原始组件选项
 	it('render correctly with top-left', () => {
-		expect(getRenderedText(sub, {
+		expect(getRenderedText(calendar, {
 			type: 'top-left'
 		})).equal('ivue-sub ivue-sub-top-left');
-	});
-	it('render correctly with top-right', () => {
-		expect(getRenderedText(sub, {
-			type: 'top-right'
-		})).equal('ivue-sub ivue-sub-top-right');
 	});
 });
