@@ -21,9 +21,7 @@
                     <input class="numInput" data-gameNo="TC_1CZS" type="tel" maxlength="6" v-model="multiple" >
                     <span class="change-btn put-rig" @click="addMultiple"></span></div>
                     <span class="mi">倍</span>
-                    <router-link to="/cart" class="buy-btn">
-                        投注
-                    </router-link>
+                    <router-link to="/cart"><i-button class="buy-btn">投注</i-button></router-link>
                 </div>
             </div>
         </div>
@@ -37,6 +35,7 @@ import isEmptyObject from '../../../../utils/isEmptyObject.js';
 import deepCopy from '../../../../utils/deepCopy.js';
 import unitConfig from '../../../../config/unitConfig.js';
 import icon from '../../../../components/icon/icon.vue';
+import iButton from '../../../../components/iButton/iButton.vue';
 
 function dealSp (spStr) {
     if (!spStr) {
@@ -51,7 +50,8 @@ function dealSp (spStr) {
 }
 export default {
     components: {
-        icon
+        icon,
+        iButton
     },
     data () {
         return {

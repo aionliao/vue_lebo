@@ -1,8 +1,5 @@
 <template>
-	<headerSimple
-		link="/"
-		title="咨询中心"
-	></headerSimple>
+	<headerSimple link="/" title="资讯中心"></headerSimple>
 </template>
 
 <script>
