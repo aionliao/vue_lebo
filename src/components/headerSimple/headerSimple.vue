@@ -3,7 +3,7 @@
         <router-link :to="link">
             <headerIcon
             type="left-1"
-            iconType="arrow-left"
+            iconType="back"
             ></headerIcon>
         </router-link>
         <h2>{{title}}</h2>
