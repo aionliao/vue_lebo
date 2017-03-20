@@ -2,7 +2,7 @@
 	<div>
 		<footer>
             <div class="footer-link">
-                <p>全国客服热线：<a href="tel:010-65617701">010-65617701</a></p>
+                <p>全国客服热线：<a :href="tel">{{tel}}</a></p>
             </div>
             <div class="footer-intro">
                 <p>不得向未满18周岁的青少年出售彩票</p>
@@ -13,7 +13,13 @@
 </template>
 
 <script>
+import customServerTel from '../../config/customServerTel.js';
 export default {
+	data () {
+		return {
+			tel: customServerTel
+		};
+	}
 };
 </script>
 

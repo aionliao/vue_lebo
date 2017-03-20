@@ -2,8 +2,8 @@
 	<section class="login">
 		<headerSimple link="/" title="登录"></headerSimple>
 		<div class="login-input-area">
-			<inputArea iconType="yonghuming" inputType="text" placeholder="输入手机号/用户名"></inputArea>
-			<inputArea iconType="mima" type="password" placeholder="输入您的密码"></inputArea>
+			<inputArea iconType="people" inputType="text" placeholder="输入手机号/用户名"></inputArea>
+			<inputArea iconType="password" type="password" placeholder="输入您的密码"></inputArea>
 		</div>
 		<div class="login-btn-area">
 			<conWrap>

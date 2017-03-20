@@ -1,19 +1,19 @@
 <template>
-	<div class="input-add-plus">
+	<div :class="classes">
 		<row type="flex">
 			<i-col span="20">
 				<row type="flex">
 					<i-col span="7" class="input-add">
 						<div class="filled" @click="minusValue">
-							<icon type="minus" class="center-all"></icon>
+							<icon type="move" class="center-all"></icon>
 						</div>
 					</i-col>
 					<i-col span="10">
-						<i-input type="tel" :maxValue="maxValue" :value="inputVal" @input="updateValue"></i-input>
+						<i-input type="tel" :maxValue="maxValue" :value="inputVal" @input="updateValue" @blur="inputBlur" @focus="inputFocus"></i-input>
 					</i-col>
 					<i-col span="7" class="input-add input-plus">
 						<div class="filled" @click="plusValue">
-							<icon type="plus" class="center-all"></icon>
+							<icon type="add" class="center-all"></icon>
 						</div>
 					</i-col>
 				</row>
@@ -31,20 +31,24 @@ import iInput from './input.vue';
 export default {
 	props: {
 		value: {
-			type: [Number],
+			type: [Number, String],
 			default: 1
 		},
 		minValue: {
-			type: [Number],
+			type: [Number, String],
 			default: 1
 		},
 		maxValue: {
-			type: [Number],
+			type: [Number, String],
 			default: 999
 		},
 		dValue: {
-			type: [Number],
+			type: [Number, String],
 			default: 1
+		},
+		type: {
+			type: [String],
+			default: ''
 		}
 	},
 	components: {
@@ -55,7 +59,9 @@ export default {
 	},
 	data () {
 		return {
-			inputVal: this.value
+			inputVal: this.value,
+			classes: `input-add-plus ${this.type}`,
+			dealedDVal: parseInt(this.dValue)
 		};
 	},
 	methods: {
@@ -63,37 +69,72 @@ export default {
 			if (this.inputVal <= this.minValue) {
 				return;
 			}
-			this.inputVal -= this.dValue;
+			this.inputVal -= this.dealedDVal;
 			// console.log('mins');
 			// console.log(this.inputVal);
+			this.$emit('input', this.inputVal);
 		},
 		plusValue () {
 			if (this.inputVal >= this.maxValue) {
 				return;
 			}
 			this.inputVal = parseInt(this.inputVal);
-			this.inputVal += this.dValue;
+			this.inputVal += this.dealedDVal;
+			this.dealMoreThanMaxVal();
 			// console.log('plus');
 			// console.log(this.inputVal);
+			this.$emit('input', this.inputVal);
 		},
 		updateValue (value) {
 			console.log(value);
 			this.inputVal = value;
+			this.dealMoreThanMaxVal();
+			this.$emit('input', this.inputVal);
+		},
+		dealMoreThanMaxVal () {
+			if (this.inputVal >= this.maxValue) {
+				this.inputVal = this.maxValue;
+			}
+		},
+		inputBlur (val) {
+			console.log(val);
+			this.inputVal = this.value;
+			this.$emit('input', this.inputVal);
+		},
+		inputFocus () {
+			console.log('focus');
 		}
 	}
 };
 </script>
 <style lang="less">
 @import "../../styles/custom";
+@basewidth: 120px;
+@baseHei: 30px;
+@bigwidth: 150px;
+@bigHei: 40px;
 .input-add-plus{
-	width: 120px;
-	line-height: 30px;
+	width: @basewidth;
+	text-align: center;
+}
+.big.input-add-plus{
+	width: @bigwidth;
 }
 .input-add-plus .@{css-prefix}-input, .input-add-plus .input-add {
 	border: 1px solid @border-color-grap;
 	text-align: center;
-	height: 30px;
 }
+.input-add-plus, .input-add-plus .@{css-prefix}-input, .input-add-plus .input-add {
+	line-height: @baseHei;
+	height: @baseHei;
+}
+
+// big版的组件
+.big.input-add-plus, .big.input-add-plus .@{css-prefix}-input, .big.input-add-plus .input-add {
+	line-height: @bigHei;
+	height: @bigHei;
+}
+
 .input-add-plus .input-add {
 	border-right: none;
 }

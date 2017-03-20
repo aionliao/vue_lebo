@@ -2,12 +2,12 @@
 	<section class="login">
 		<headerSimple link="/" title="注册"></headerSimple>
 		<div class="login-input-area">
-			<inputArea iconType="yonghuming" inputType="text" placeholder="4-12个字符或下划线，不能全部为数字"></inputArea>
-			<inputArea iconType="mima" type="password" placeholder="请输入6-16个字符"></inputArea>
-			<inputArea iconType="mima" type="password" placeholder="请确认密码"></inputArea>
+			<inputArea iconType="people" inputType="text" placeholder="4-12个字符或下划线，不能全部为数字"></inputArea>
+			<inputArea iconType="password" type="password" placeholder="请输入6-16个字符"></inputArea>
+			<inputArea iconType="password" type="password" placeholder="请确认密码"></inputArea>
 		</div>
 		<div class="login-input-area">
-			<inputArea iconType="peiziiconfont09" inputType="text" placeholder="请输入手机号"></inputArea>
+			<inputArea iconType="mobilefill" inputType="text" placeholder="请输入手机号"></inputArea>
 			<inputArea iconType="yanzhengma" type="password" placeholder="请输入验证码"></inputArea>
 		</div>
 		<div class="login-btn-area">

@@ -2,7 +2,7 @@
     <sectionWrap mt="50">
         <headers>
             <router-link to="/">
-                <headerIcon type="left-1" iconType="arrow-left"></headerIcon>
+                <headerIcon type="left-1" iconType="back"></headerIcon>
             </router-link>
             <h2>{{gameNoShow}}</h2>
         </headers>

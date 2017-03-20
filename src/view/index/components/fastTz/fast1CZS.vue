@@ -16,13 +16,12 @@
             </ul>
             <p class="award-money">最大奖金：<span id="awardMoney">{{awardMoney}}</span>{{unitConfig.unit}}</p>
             <div class="summary">
-                <div class="put-money" id="guessPutMoney">
-                    <span class="change-btn put-left" @click="plusMultiple"></span>
-                    <input class="numInput" data-gameNo="TC_1CZS" type="tel" maxlength="6" v-model="multiple" >
-                    <span class="change-btn put-rig" @click="addMultiple"></span></div>
-                    <span class="mi">倍</span>
-                    <router-link to="/cart"><i-button class="buy-btn">投注</i-button></router-link>
-                </div>
+                <inputSubPlus type="big" minValue="5" dValue="5" :value="multiple" @input="updateInputVal">倍</inputSubPlus>
+                <!-- <span class="change-btn put-left" @click="plusMultiple"></span>
+                <input class="numInput" data-gameNo="TC_1CZS" type="tel" maxlength="6" v-model="multiple" >
+                <span class="change-btn put-rig" @click="addMultiple"></span></div>
+                <span class="mi">倍</span> -->
+                <router-link to="/cart" class="buy-btn"><i-button type="radius">投注</i-button></router-link>
             </div>
         </div>
     </div>
@@ -36,6 +35,7 @@ import deepCopy from '../../../../utils/deepCopy.js';
 import unitConfig from '../../../../config/unitConfig.js';
 import icon from '../../../../components/icon/icon.vue';
 import iButton from '../../../../components/iButton/iButton.vue';
+import inputSubPlus from '../../../../components/input/inputSubPlus.vue';
 
 function dealSp (spStr) {
     if (!spStr) {
@@ -51,7 +51,8 @@ function dealSp (spStr) {
 export default {
     components: {
         icon,
-        iButton
+        iButton,
+        inputSubPlus
     },
     data () {
         return {
@@ -160,6 +161,9 @@ export default {
         setCurrentIndex (index) {
             this.statusConfig.firstInit = false;
             this.currentIndexLast = index;
+        },
+        updateInputVal (val) {
+            this.multiple = val;
         }
     }
 };
