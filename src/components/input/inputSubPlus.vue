@@ -2,7 +2,7 @@
 	<div :class="classes">
 		<row type="flex">
 			<i-col span="20">
-				<row type="flex">
+				<row type="flex" class="input-add-plus-area">
 					<i-col span="7" class="input-add">
 						<div class="filled" @click="minusValue">
 							<icon type="move" class="center-all"></icon>
@@ -97,9 +97,10 @@ export default {
 			}
 		},
 		inputBlur (val) {
-			console.log(val);
-			this.inputVal = this.value;
-			this.$emit('input', this.inputVal);
+			if (val < this.minValue) {
+				this.inputVal = this.minValue;
+				this.$emit('input', this.inputVal);
+			}
 		},
 		inputFocus () {
 			console.log('focus');
@@ -117,12 +118,17 @@ export default {
 	width: @basewidth;
 	text-align: center;
 }
+.input-add-plus-area {
+	border: 1px solid @border-color-grap;
+}
 .big.input-add-plus{
 	width: @bigwidth;
 }
 .input-add-plus .@{css-prefix}-input, .input-add-plus .input-add {
-	border: 1px solid @border-color-grap;
 	text-align: center;
+}
+.input-add-plus .input-add {
+	border-right: 1px solid @border-color-grap;
 }
 .input-add-plus, .input-add-plus .@{css-prefix}-input, .input-add-plus .input-add {
 	line-height: @baseHei;
@@ -135,12 +141,9 @@ export default {
 	height: @bigHei;
 }
 
-.input-add-plus .input-add {
-	border-right: none;
-}
 .input-add-plus .input-add.input-plus {
-	border-left: none;
-	border-right: 1px solid @border-color-grap;
+	border-right: none;
+	border-left: 1px solid @border-color-grap;
 }
 .input-add-plus .@{css-prefix}-icon {
 	font-size: 14px;

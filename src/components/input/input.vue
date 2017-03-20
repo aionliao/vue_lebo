@@ -62,7 +62,7 @@
 				this.$emit('input', this.$refs.input.value);
 			},
 			inputBlur () {
-				console.log(this.$refs.input.value);
+				// console.log(this.$refs.input.value);
 				this.$emit('blur', this.$refs.input.value);
 			},
 			inputFocus () {

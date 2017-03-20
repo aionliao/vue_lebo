@@ -17,7 +17,7 @@
                                 <span>{{jcData.matchList.length}}场比赛可投</span>
                             </template>
                             <template slot="right">
-                                <icon type="arrow-down"></icon>
+                                <icon type="unfold"></icon>
                             </template>
                         </lmrLayout>
                     </conWrap>
@@ -37,7 +37,7 @@
                         </div>
                     </i-col>
                     <i-col span="14">
-                        <div class="filled" v-if="tzNum < minTzNum">
+                        <div v-if="tzNum < minTzNum">
                             <div class="center-all">
                                 <p>已选择<span class="text-base-color">{{tzNum}}</span>场</p>
                                 <p class="text-grap">请至少选择{{minTzNum}}场比赛</p>

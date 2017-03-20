@@ -5,7 +5,7 @@
             <h3>
                 <i>{{fast1CZSData.leagueShort}}<span class="time">{{matchSellOutTime}}</span>截止</i>
                 <span class="refresh" id="guessRefresh">
-                    <icon type="duihuan"></icon>换一场
+                    <icon type="refresh"></icon>换一场
                 </span>
             </h3>
             <ul class="guess" id="guess">
@@ -17,10 +17,6 @@
             <p class="award-money">最大奖金：<span id="awardMoney">{{awardMoney}}</span>{{unitConfig.unit}}</p>
             <div class="summary">
                 <inputSubPlus type="big" minValue="5" dValue="5" :value="multiple" @input="updateInputVal">倍</inputSubPlus>
-                <!-- <span class="change-btn put-left" @click="plusMultiple"></span>
-                <input class="numInput" data-gameNo="TC_1CZS" type="tel" maxlength="6" v-model="multiple" >
-                <span class="change-btn put-rig" @click="addMultiple"></span></div>
-                <span class="mi">倍</span> -->
                 <router-link to="/cart" class="buy-btn"><i-button type="radius">投注</i-button></router-link>
             </div>
         </div>
