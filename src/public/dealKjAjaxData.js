@@ -8,7 +8,6 @@
 function dealKjAjaxData (obj) {
 	let list = obj.data;
 	let needObjArr = [];
-	let orderArr = obj.orderArr;
 	let orderIndex = {};
 	for (let i = 0, len = list.length; i < len; i++) {
 		let listI = list[i];
@@ -22,9 +21,13 @@ function dealKjAjaxData (obj) {
 			listI.firstBalls = winCode.split(',');
 		}
 	}
-
-	for (let i = 0, len = orderArr.length; i < len; i++) {
-		needObjArr.push(list[orderIndex[orderArr[i]]]);
+	if (obj.orderArr) {
+		let orderArr = obj.orderArr;
+		for (let i = 0, len = orderArr.length; i < len; i++) {
+			needObjArr.push(list[orderIndex[orderArr[i]]]);
+		}
+	} else {
+		needObjArr = list;
 	}
 	return needObjArr;
 }

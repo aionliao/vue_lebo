@@ -1,5 +1,5 @@
 <template>
-    <headers>
+    <headers :posType="posType">
         <router-link :to="link">
             <headerIcon type="left-1" iconType="back"></headerIcon>
         </router-link>
@@ -13,7 +13,11 @@ import headerIcon from './headerIcon.vue';
 export default {
     props: {
         link: String,
-        title: String
+        title: String,
+        posType: {
+            type: String,
+            default: ''
+        }
     },
     components: {
         headers,

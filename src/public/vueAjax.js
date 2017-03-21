@@ -6,12 +6,14 @@
  *      headers：{Object} 请求带的header头信息
  *      that:
  */
+import oneOf from '../utils/oneOf.js';
+
 function vueAjax (option) {
     let that = option.that;
     let method = option.method && (option.method).toLowerCase() || 'get';
     let transactionType = option.data.transactionType;
 
-    if (transactionType === '10103017') {
+    if (oneOf(transactionType, ['10103017', '10105002', '10105027'])) {
         transactionType = `${transactionType}_${option.data.gameNo}`;
     }
     let getUrl = './static/data/' + transactionType + '.json';

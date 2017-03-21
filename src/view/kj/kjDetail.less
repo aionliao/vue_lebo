@@ -1,0 +1,17 @@
+@import "../../styles/custom";
+@import "../../styles/mixins/center";
+@namespace: kj-detail;
+
+
+.@{namespace} .@{css-prefix}-row {
+	background-color: #fff;
+}
+.@{namespace} .con-wrap {
+	padding: 10px;
+	border-bottom: 1px solid @border-color-base;
+}
+.@{namespace} .con-wrap .@{css-prefix}-icon {
+	position: absolute;
+	color: @text-grap;
+	.centerMidRig(10px);
+}
