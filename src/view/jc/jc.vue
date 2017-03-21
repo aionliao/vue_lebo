@@ -67,7 +67,7 @@
 <script>
 import headers from '../../components/headers/headers.vue';
 import iSub from '../../components/sub/sub.vue';
-import headerIcon from '../../components/headerIcon/headerIcon.vue';
+import headerIcon from '../../components/headers/headerIcon.vue';
 import inputSubPlus from '../../components/input/inputSubPlus.vue';
 import icon from '../../components/icon/icon.vue';
 import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';

@@ -149,4 +149,7 @@ export default {
 	font-size: 14px;
 	color: @text-grap;
 }
+.big.input-add-plus .@{css-prefix}-icon {
+	font-size: 20px;
+}
 </style>

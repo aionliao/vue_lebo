@@ -1,30 +1,27 @@
 <template>
 	<sectionWrap>
-		<headerSimple
-		link="/"
-		title="活动"
-		></headerSimple>
+		<headerSimple link="/" title="活动"></headerSimple>
 		<section class="activity">
-				<row>
-						<i-col span="24" v-for="list in activityData">
-							<conWrap>
-								<boxWrap
-								urlType="other"
-								:title="list.titile"
-								:imgSrc="list.imgUrl"
-								:link="list.jumpURL"
-								:innerText="list.timeQuJian"
-								></boxWrap>
-							</conWrap>
-						</i-col>
-				</row>
+			<row>
+				<i-col span="24" v-for="list in activityData">
+					<conWrap>
+						<boxWrap
+						urlType="other"
+						:title="list.titile"
+						:imgSrc="list.imgUrl"
+						:link="list.jumpURL"
+						:innerText="list.timeQuJian"
+						></boxWrap>
+					</conWrap>
+				</i-col>
+			</row>
 		</section>
 	</sectionWrap>
 </template>
 
 <script>
 	import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';
-	import headerSimple from '../../components/headerSimple/headerSimple.vue';
+	import headerSimple from '../../components/headers/headerSimple.vue';
 	import boxWrap from '../../components/boxWrap/boxWrap.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import { Row, iCol } from '../../components/layout/index.js';

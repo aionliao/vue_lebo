@@ -8,7 +8,8 @@ import jc from '../view/jc/jc.vue';
 import more from '../view/more/more.vue';
 import info from '../view/info/info.vue';
 import sign from '../view/sign/sign.vue';
-import kjList from '../view/kjList/kjList.vue';
+import kjList from '../view/kj/kjList.vue';
+import kjDetail from '../view/kj/kjDetail.vue';
 
 Vue.use(Router);
 
@@ -58,6 +59,10 @@ export default new Router({
             path: '/kj',
             name: 'kjList',
             component: kjList
+        },
+        {
+            path: '/kjdetail/:gameNo/issueNo/:issueNo',
+            component: kjDetail
         }
     ]
 });

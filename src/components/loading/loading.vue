@@ -1,30 +1,61 @@
 <template lang="html">
-    <div class="loading">
-        <div class="img-wrap" v-if="imgSrc">
-            <img :src="imgSrc">
+    <div :class="classes">
+        <div class="img-wrap" :class="imgSrcObj.className" v-if="imgSrcObj">
+            <img :src="imgSrcObj.src">
         </div>
-        <p v-if="innerText">{{innerText}}</p>
+        <p><slot></slot></p>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        imgSrc: {
+        type: String,
+        posType: {
             type: String,
-            default: './static/img/loading.gif'
-        },
-        innerText: String
+            default: ''
+        }
+    },
+    data () {
+        return {
+            classes: `loading ${this.posType}`
+        };
+    },
+    computed: {
+        imgSrcObj () {
+            let imgSrcObj = {
+                loading: {
+                    src: './static/img/loading.gif',
+                    className: 'loading-gif'
+                }
+            };
+
+            if (imgSrcObj[this.type]) {
+                return imgSrcObj[this.type];
+            }
+        }
     }
 };
 </script>
 
-<style lang="css">
+<style lang="less">
+@import "../../styles/custom.less";
+@import "../../styles/mixins/center.less";
 .loading {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
+    .centerAll();
+    text-align: center;
+    color: @text-grap;
+}
+.loading.absolute {
+    position: absolute;
+}
+.loading-gif {
+    width: 30px;
+    margin: 0 auto;
+}
+.loading p{
+    font-size: 14px;
+    white-space: nowrap;
 }
 </style>

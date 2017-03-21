@@ -3,7 +3,7 @@
 </template>
 
 <script>
-	import headerSimple from '../../components/headerSimple/headerSimple.vue';
+	import headerSimple from '../../components/headers/headerSimple.vue';
 
 	export default {
 		components: {

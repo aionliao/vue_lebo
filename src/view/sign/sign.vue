@@ -33,7 +33,7 @@
 <script>
 	import { Row, iCol } from '../../components/layout/index.js';
 	import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';
-	import headerSimple from '../../components/headerSimple/headerSimple.vue';
+	import headerSimple from '../../components/headers/headerSimple.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import lmrLayout from '../../components/layout/lmrLayout.vue';
 	import calendar from '../../components/calendar/calendar.vue';

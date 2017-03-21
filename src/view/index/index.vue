@@ -1,6 +1,6 @@
 <template>
     <section>
-        <headers>
+        <headers posType="relative">
             <img class="logo" v-lazy="imgUrl">
             <router-link to="/download" class="download">
                 <span class="head_text">下载客户端</span>

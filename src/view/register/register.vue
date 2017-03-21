@@ -25,8 +25,8 @@
 </template>
 
 <script>
-	import headerSimple from '../../components/headerSimple/headerSimple.vue';
-	import inputArea from '../../components/inputArea/inputArea.vue';
+	import headerSimple from '../../components/headers/headerSimple.vue';
+	import inputArea from '../../components/input/inputArea.vue';
 	import iButton from '../../components/iButton/iButton.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import linkArea from '../../components/linkArea/linkArea.vue';

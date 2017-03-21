@@ -1,15 +1,15 @@
 <template>
 	<sectionWrap class="kj-list mb-10">
-		<headerSimple
-			link="/"
-			title="开奖信息"
-		></headerSimple>
-		<row>
+		<headerSimple link="/" title="开奖信息"></headerSimple>
+		<loading type="loading" v-if="statusConfig.loading">
+			{{statusConfig.msg}}
+		</loading>
+		<row v-else>
 			<i-col span="24" v-for="kjData in kjDatas">
-				<router-link :to="'/kj/' + kjData.gameNo">
+				<router-link :to="`/kjdetail/${kjData.gameNo}/issueNo/${kjData.issueNo}`">
 					<conWrap>
 						<kjItem :obj="kjData">
-							<icon type="arrow-right"></icon>
+							<icon type="iconright"></icon>
 						</kjItem>
 					</conWrap>
 				</router-link>
@@ -21,10 +21,11 @@
 <script>
 	import { Row, iCol } from '../../components/layout/index.js';
 	import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';
-	import headerSimple from '../../components/headerSimple/headerSimple.vue';
+	import headerSimple from '../../components/headers/headerSimple.vue';
 	import kjItem from '../../components/kjItem/kjItem.vue';
 	import icon from '../../components/icon/icon.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
+	import loading from '../../components/loading/loading.vue';
 
 	import vueAjax from '../../public/vueAjax.js';
 	import dealResCode from '../../public/dealResCode.js';
@@ -41,11 +42,16 @@
 			kjItem,
 			Row,
 			iCol,
-			icon
+			icon,
+			loading
 		},
 		data () {
 			return {
-				kjDatas: {}
+				kjDatas: {},
+				statusConfig: {
+					loading: true,
+					msg: '加载中'
+				}
 			};
 		},
 		created () {
@@ -64,14 +70,14 @@
 						data: data.list,
 						orderArr: orderArr
 					});
-					// this.statusConfig.loaded = true;
+					this.statusConfig.loading = false;
 				} else {
-					// this.statusConfig.loaded = false;
-					// this.statusConfig.msg = data.resMsg;
+					this.statusConfig.loading = false;
+					this.statusConfig.msg = data.resMsg;
 				}
 			}, (response) => {
-				// this.statusConfig.loaded = false;
-				// this.statusConfig.msg = '服务器迷路了';
+				this.statusConfig.loading = false;
+				this.statusConfig.msg = '服务器迷路了';
 			});
 		}
 	};

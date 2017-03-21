@@ -8,7 +8,7 @@
 	</section>
 </template>
 <script>
-import headerSimple from '../../components/headerSimple/headerSimple.vue';
+import headerSimple from '../../components/headers/headerSimple.vue';
 import caiList from '../../components/caiList/caiList.vue';
 import moreCaiList from '../../config/moreCaiList.js';
 export default {

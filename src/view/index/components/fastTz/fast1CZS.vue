@@ -1,6 +1,8 @@
 <template lang="html">
     <div>
-        <div v-if="!statusConfig.loaded" class="loading">{{statusConfig.msg}}</div>
+        <div v-if="!statusConfig.loaded" class="loading">
+            <loading posType="absolute">{{statusConfig.msg}}</loading>
+        </div>
         <div v-if="statusConfig.loaded">
             <h3>
                 <i>{{fast1CZSData.leagueShort}}<span class="time">{{matchSellOutTime}}</span>截止</i>
@@ -9,7 +11,7 @@
                 </span>
             </h3>
             <ul class="guess" id="guess">
-                <li v-for="(matchInfo, index) in matchAgainstSpInfoList" @click="setCurrentIndex(index)" :class="index === currentIndex ? 'current' : ''" >
+                <li v-for="(matchInfo, index) in matchAgainstSpInfoList" @click="setCurrentIndex(index)" :class="index === currentIndex ? 'select-bottom-icon current' : ''" >
                     <div>{{matchInfo.teamName}}</div>
                     <p>{{matchInfo.sp}}</p>
                 </li>
@@ -29,8 +31,10 @@ import formatTime from '../../../../utils/formatTime.js';
 import isEmptyObject from '../../../../utils/isEmptyObject.js';
 import deepCopy from '../../../../utils/deepCopy.js';
 import unitConfig from '../../../../config/unitConfig.js';
+
 import icon from '../../../../components/icon/icon.vue';
 import iButton from '../../../../components/iButton/iButton.vue';
+import loading from '../../../../components/loading/loading.vue';
 import inputSubPlus from '../../../../components/input/inputSubPlus.vue';
 
 function dealSp (spStr) {
@@ -48,7 +52,8 @@ export default {
     components: {
         icon,
         iButton,
-        inputSubPlus
+        inputSubPlus,
+        loading
     },
     data () {
         return {
