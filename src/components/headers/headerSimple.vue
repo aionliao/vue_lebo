@@ -1,6 +1,9 @@
 <template>
     <headers :posType="posType">
-        <router-link :to="link">
+        <a href="javascript: history.back(-1)" v-if="link === 'back(-1)'">
+            <headerIcon type="left-1" iconType="back"></headerIcon>
+        </a>
+        <router-link :to="link" v-else>
             <headerIcon type="left-1" iconType="back"></headerIcon>
         </router-link>
         <h2>{{title}}</h2>

@@ -13,6 +13,9 @@ Vue.use(VueLazyload, {
     loading: './static/img/lazy-icon.jpg',
     attempt: 1
 });
+Vue.prototype.$message = function (str) {
+    alert(`fuck ${str}`);
+};
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

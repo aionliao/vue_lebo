@@ -1,7 +1,7 @@
 <template>
     <section>
         <headers posType="relative">
-            <img class="logo" v-lazy="imgUrl">
+            <img class="logo" v-lazy="imgUrl" @click="hitMsg">
             <router-link to="/download" class="download">
                 <span class="head_text">下载客户端</span>
                 <icon type="pulldown"></icon>
@@ -115,7 +115,9 @@ export default {
         }, (response) => {});
     },
     methods: {
-
+        hitMsg () {
+            this.$message('haha');
+        }
     }
 }
 </script>

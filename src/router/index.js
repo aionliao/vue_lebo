@@ -61,7 +61,7 @@ export default new Router({
             component: kjList
         },
         {
-            path: '/kjdetail/:gameNo/issueNo/:issueNo',
+            path: '/kjDetail/:gameNo/issueNo/:issueNo',
             component: kjDetail
         }
     ]

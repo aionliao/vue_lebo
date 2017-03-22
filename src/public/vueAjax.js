@@ -12,9 +12,10 @@ function vueAjax (option) {
     let that = option.that;
     let method = option.method && (option.method).toLowerCase() || 'get';
     let transactionType = option.data.transactionType;
+    let gameNo = option.data.gameNo || option.data.lotteryNo;
 
     if (oneOf(transactionType, ['10103017', '10105002', '10105027'])) {
-        transactionType = `${transactionType}_${option.data.gameNo}`;
+        transactionType = `${transactionType}_${gameNo}`;
     }
     let getUrl = './static/data/' + transactionType + '.json';
 

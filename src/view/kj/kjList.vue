@@ -6,7 +6,7 @@
 		</loading>
 		<row v-else>
 			<i-col span="24" v-for="kjData in kjDatas">
-				<router-link :to="`/kjdetail/${kjData.gameNo}/issueNo/${kjData.issueNo}`">
+				<router-link :to="`/kjDetail/${kjData.gameNo}/issueNo/${kjData.issueNo}`">
 					<conWrap>
 						<kjItem :obj="kjData">
 							<icon type="iconright"></icon>

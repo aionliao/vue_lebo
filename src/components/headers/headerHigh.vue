@@ -18,11 +18,13 @@ export default {
 };
 </script>
 <style lang="less">
+@import '../../styles/custom.less';
 .high-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 88px;
+    z-index: @zindex-header;
 }
 </style>

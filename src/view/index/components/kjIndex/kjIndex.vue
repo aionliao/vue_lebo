@@ -6,15 +6,8 @@
 		>
             <carouseItem slot="body" v-for="kjData in kjDatas" :class="kjData.gameNo === 'TC_SF14' ? 'kj-sfc' : ''" >
 				<kjItem :obj="kjData"></kjItem>
-				<!-- <p class="kj-text"><span class="red">{{kjData.gameName}}</span><span>第{{kjData.issueNo}}期</span></p>
-				<ol>
-					<li v-for="ball in kjData.winCodeFirst">{{ball}}</li>
-					<li class="blue" v-if="kjData.winCodeSecond" v-for="ball in kjData.winCodeSecond">
-						{{ball}}
-					</li>
-				</ol> -->
 				<p class="a-btn">
-					<router-link :to="'/kj/' + kjData.gameNo">详情</router-link>
+					<router-link :to="`/kjDetail/${kjData.gameNo}/issueNo/${kjData.issueNo}`">详情</router-link>
 					<router-link :to="'/tz/' + kjData.gameNo">投注</router-link>
 				</p>
             </carouseItem>
