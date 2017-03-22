@@ -10,6 +10,9 @@ import info from '../view/info/info.vue';
 import sign from '../view/sign/sign.vue';
 import kjList from '../view/kj/kjList.vue';
 import kjDetail from '../view/kj/kjDetail.vue';
+import redIndex from '../view/red/redIndex.vue';
+import bfIndex from '../view/bf/bfIndex.vue';
+import trendIndex from '../view/trend/trendIndex.vue';
 
 Vue.use(Router);
 
@@ -63,6 +66,18 @@ export default new Router({
         {
             path: '/kjDetail/:gameNo/issueNo/:issueNo',
             component: kjDetail
+        },
+        {
+            path: '/red',
+            component: redIndex
+        },
+        {
+            path: '/bf',
+            component: bfIndex
+        },
+        {
+            path: '/trend',
+            component: trendIndex
         }
     ]
 });
