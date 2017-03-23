@@ -1,9 +1,7 @@
 <template lang="html">
     <div>
-        <div v-if="!statusConfig.loaded" class="loading">
-            <loading posType="absolute">{{statusConfig.msg}}</loading>
-        </div>
-        <div v-if="statusConfig.loaded">
+        <loadingStatus v-if="!statusConfig.loaded"  posType="absolute" status="loading"></loadingStatus>
+        <div v-else>
             <h3>
                 <i>{{fast1CZSData.leagueShort}}<span class="time">{{matchSellOutTime}}</span>截止</i>
                 <span class="refresh" id="guessRefresh">
@@ -16,7 +14,7 @@
                     <p>{{matchInfo.sp}}</p>
                 </li>
             </ul>
-            <p class="award-money">最大奖金：<span id="awardMoney">{{awardMoney}}</span>{{unitConfig.unit}}</p>
+            <p class="award-money">最大奖金：<span>{{awardMoney}}{{unitConfig.unit}}</span></p>
             <div class="summary">
                 <inputSubPlus type="big" minValue="5" dValue="5" :value="multiple" @input="updateInputVal">倍</inputSubPlus>
                 <router-link to="/cart" class="buy-btn"><i-button type="radius">投注</i-button></router-link>
@@ -34,7 +32,7 @@ import unitConfig from '../../../../config/unitConfig.js';
 
 import icon from '../../../../components/icon/icon.vue';
 import iButton from '../../../../components/iButton/iButton.vue';
-import loading from '../../../../components/loading/loading.vue';
+import loadingStatus from '../../../../components/loadingStatus/loadingStatus.vue';
 import inputSubPlus from '../../../../components/input/inputSubPlus.vue';
 
 function dealSp (spStr) {
@@ -53,7 +51,7 @@ export default {
         icon,
         iButton,
         inputSubPlus,
-        loading
+        loadingStatus
     },
     data () {
         return {
@@ -68,7 +66,7 @@ export default {
             unitConfig: unitConfig
         };
     },
-    beforeCreate () {
+    created () {
         vueAjax({
             method: 'get',
             data: {

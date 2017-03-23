@@ -5,12 +5,14 @@
 <script>
 	export default {
 		props: {
-			classes: {
-				type: String,
-				default: ''
-			},
 			num: {
 				type: [Number, String]
+			},
+			type: String
+		},
+		computed: {
+			classes () {
+				return `${this.type}`;
 			}
 		}
 	};

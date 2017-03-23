@@ -1,9 +1,9 @@
 <template>
 	<sectionWrap class="kj-list mb-10">
 		<headerSimple link="/" title="开奖信息"></headerSimple>
-		<loading type="loading" v-if="statusConfig.loading">
+		<loadingStatus status="loading" v-if="statusConfig.loading">
 			{{statusConfig.msg}}
-		</loading>
+		</loadingStatus>
 		<row v-else>
 			<i-col span="24" v-for="kjData in kjDatas">
 				<router-link :to="`/kjDetail/${kjData.gameNo}/issueNo/${kjData.issueNo}`">
@@ -25,7 +25,7 @@
 	import kjItem from '../../components/kjItem/kjItem.vue';
 	import icon from '../../components/icon/icon.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
-	import loading from '../../components/loading/loading.vue';
+	import loadingStatus from '../../components/loadingStatus/loadingStatus.vue';
 
 	import vueAjax from '../../public/vueAjax.js';
 	import dealResCode from '../../public/dealResCode.js';
@@ -43,7 +43,7 @@
 			Row,
 			iCol,
 			icon,
-			loading
+			loadingStatus
 		},
 		data () {
 			return {

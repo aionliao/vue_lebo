@@ -81,7 +81,7 @@ export default {
 			this.inputVal = parseInt(this.inputVal);
 			this.inputVal += this.dealedDVal;
 			this.dealMoreThanMaxVal();
-			// console.log('plus');
+			console.log('plus');
 			// console.log(this.inputVal);
 			this.$emit('input', this.inputVal);
 		},

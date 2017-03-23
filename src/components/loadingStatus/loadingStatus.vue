@@ -3,14 +3,21 @@
         <div class="img-wrap" :class="imgSrcObj.className" v-if="imgSrcObj">
             <img :src="imgSrcObj.src">
         </div>
-        <p><slot></slot></p>
+        <p>{{msg}}</p>
     </div>
 </template>
 
 <script>
 export default {
     props: {
-        type: String,
+        status: {
+            type: String,
+            default: 'loading'
+        },
+        statusMsg: {
+            type: String,
+            default: '加载中'
+        },
         posType: {
             type: String,
             default: ''
@@ -22,6 +29,17 @@ export default {
         };
     },
     computed: {
+        msg () {
+            if (this.statusMsg) {
+                return this.statusMsg;
+            } else {
+                let msgObj = {
+                    'loading': '加载中',
+                    'error': '服务器迷路了~'
+                };
+                return msgObj[this.status];
+            }
+        },
         imgSrcObj () {
             let imgSrcObj = {
                 loading: {
@@ -30,8 +48,8 @@ export default {
                 }
             };
 
-            if (imgSrcObj[this.type]) {
-                return imgSrcObj[this.type];
+            if (imgSrcObj[this.status]) {
+                return imgSrcObj[this.status];
             }
         }
     }
