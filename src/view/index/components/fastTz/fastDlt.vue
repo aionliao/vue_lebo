@@ -3,7 +3,11 @@
 		<loadingStatus :status="statusConfig.loadingStatus" posType="absolute" v-if="statusConfig.isLoading" :statusMsg="statusConfig.statusMsg"></loadingStatus>
 		<template v-else>
 			<h3>
-                <i>大乐透 {{dltList.issue}}期 距离截止<span class="time">{{1}}</span></i>
+                <i>大乐透 {{dltList.issue}}期 距离截止
+					<span class="time">
+						<countDown :timeSp="dltList.timeStep"></countDown>
+					</span>
+				</i>
                 <span class="refresh" @click="getRandomDlt">
                     <icon type="refresh"></icon>换一注
                 </span>
@@ -30,6 +34,7 @@ import icon from '../../../../components/icon/icon.vue';
 import caiBall from '../../../../components/ball/caiBall.vue';
 import iButton from '../../../../components/iButton/iButton.vue';
 import loadingStatus from '../../../../components/loadingStatus/loadingStatus.vue';
+import countDown from '../../../../components/countDown/countDown.vue';
 import inputSubPlus from '../../../../components/input/inputSubPlus.vue';
 import dealResCode from '../../../../public/dealResCode.js';
 
@@ -60,7 +65,8 @@ export default {
         iButton,
         inputSubPlus,
         loadingStatus,
-		caiBall
+		caiBall,
+		countDown
 	},
 	created () {
         vueAjax({
