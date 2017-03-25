@@ -5,6 +5,7 @@ import App from './App';
 import router from './router';
 import VueLazyload from 'vue-lazyload';
 import VueResource from 'vue-resource';
+import Message from './components/message/';
 
 Vue.use(VueResource);
 Vue.use(VueLazyload, {
@@ -13,9 +14,7 @@ Vue.use(VueLazyload, {
     loading: './static/img/lazy-icon.jpg',
     attempt: 1
 });
-Vue.prototype.$message = function (str) {
-    alert(`fuck ${str}`);
-};
+Vue.prototype.$message = Message;
 /* eslint-disable no-new */
 new Vue({
     el: '#app',

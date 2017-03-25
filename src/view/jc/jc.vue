@@ -6,8 +6,9 @@
             </router-link>
             <h2>{{gameNoShow}}</h2>
         </headers>
-        <ul class="jc-wrap">
-            <li v-for="jcData in dealedJcData" v-if="statusConfig.loaded">
+        <loadingStatus v-if="statusConfig.isLoading" :status="statusConfig.loadingStatus"></loadingStatus>
+        <ul v-else class="jc-wrap">
+            <li v-for="jcData in dealedJcData">
                 <div class="jc-gather">
                     <conWrap>
                         <lmrLayout type="left-right">
@@ -69,6 +70,7 @@ import headers from '../../components/headers/headers.vue';
 import iSub from '../../components/sub/sub.vue';
 import headerIcon from '../../components/headers/headerIcon.vue';
 import inputSubPlus from '../../components/input/inputSubPlus.vue';
+import loadingStatus from '../../components/loadingStatus/loadingStatus.vue';
 import icon from '../../components/icon/icon.vue';
 import sectionWrap from '../../components/sectionWrap/sectionWrap.vue';
 import conWrap from '../../components/conWrap/conWrap.vue';
@@ -102,12 +104,14 @@ export default {
         fixedFooter,
         jcItem,
         inputSubPlus,
-        iSub
+        iSub,
+        loadingStatus
     },
     data () {
         return {
             statusConfig: {
-                loaded: false
+                isLoading: true,
+                loadingType: 'loading'
             },
             jcData: [],
             tzNum: 0,
@@ -132,7 +136,7 @@ export default {
 
             if (resCode === '0') {
                 this.jcData = data.list;
-                this.statusConfig.loaded = true;
+                this.statusConfig.isLoading = false;
             } else {
                 // this.statusConfig.loaded = false;
                 // this.statusConfig.msg = data.resMsg;

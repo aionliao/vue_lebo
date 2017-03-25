@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {PopupManager} from '../../../utils/popup';
+// import {PopupManager} from '../../../utils/popup';
 let MessageConstructor = Vue.extend(require('./main.vue'));
 
 let instance;
@@ -26,9 +26,21 @@ var Message = function (options) {
 
 	instance.vm.visible = true;
 	instance.dom = instance.vm.$el;
-	instance.dom.style.zIndex = PopupManager.nextZIndex();
+	// instance.dom.style.zIndex = PopupManager.nextZIndex();
+	// instance.dom.style.zIndex = '22';
 	instances.push(instance);
 	return instance.vm;
 };
 
+Message.destory = function (id, userOnClose) {
+	for (let i = 0, len = instances.length; i < len; i++) {
+		if (id === instances[i].id) {
+			if (typeof userOnClose === 'function') {
+				userOnClose(instances[i]);
+			}
+			instances.splice(i, 1);
+		}
+		break;
+	}
+};
 export default Message;
