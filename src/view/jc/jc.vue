@@ -1,11 +1,9 @@
 <template>
     <sectionWrap mt="50">
-        <headers>
-            <router-link to="/">
-                <headerIcon type="left-1" iconType="back"></headerIcon>
-            </router-link>
-            <h2>{{gameNoShow}}</h2>
-        </headers>
+        <headerSimple :title="gameNoShow" link="/">
+            <headerIcon type="right-2" iconType="filter"></headerIcon>
+            <headerIcon type="right-1" iconType="category"></headerIcon>
+        </headerSimple>
         <loadingStatus v-if="statusConfig.isLoading" :status="statusConfig.loadingStatus"></loadingStatus>
         <ul v-else class="jc-wrap">
             <li v-for="jcData in dealedJcData">
@@ -66,7 +64,7 @@
 </template>
 
 <script>
-import headers from '../../components/headers/headers.vue';
+import headerSimple from '../../components/headers/headerSimple.vue';
 import iSub from '../../components/sub/sub.vue';
 import headerIcon from '../../components/headers/headerIcon.vue';
 import inputSubPlus from '../../components/input/inputSubPlus.vue';
@@ -92,7 +90,7 @@ export default {
         }
     },
     components: {
-        headers,
+        headerSimple,
         headerIcon,
         icon,
         Row,

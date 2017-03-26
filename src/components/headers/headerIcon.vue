@@ -42,4 +42,12 @@
 .@{prefixCls}-left-1 {
     left: 0;
 }
+.@{prefixCls}-right-1 {
+	width: 40px;
+    right: 0;
+}
+.@{prefixCls}-right-2 {
+	width: 40px;
+    right: 40px;
+}
 </style>

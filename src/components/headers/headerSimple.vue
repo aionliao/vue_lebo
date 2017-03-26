@@ -7,6 +7,7 @@
             <headerIcon type="left-1" iconType="back"></headerIcon>
         </router-link>
         <h2>{{title}}</h2>
+        <slot></slot>
     </headers>
 </template>
 
