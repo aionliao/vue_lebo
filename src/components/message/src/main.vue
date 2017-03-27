@@ -1,5 +1,7 @@
 <template>
-    <div class="tips">{{message}}</div>
+    <transition name="message-fade">
+        <div class="tips">{{message}}</div>
+    </transition>
 </template>
 
 <script>
@@ -27,5 +29,13 @@ export default {
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
     text-align: center;
+    transform: translate(0, 0);
+    opacity: 1;
+    transition: opacity .3s,transform .4s;
+}
+
+.message-fade-enter,.message-fade-leave-active {
+    opacity: 0;
+    transform: translate(0,-100%)
 }
 </style>

@@ -48,7 +48,9 @@ import spItem from './spItem.vue';
 import { Row, iCol } from '../../components/layout/index.js';
 export default {
     props: {
-        clear: Number
+        spObj: Object,
+        clear: Number,
+        letScore: String
     },
     components: {
         Row,
@@ -68,8 +70,8 @@ export default {
                             className: ''
                         },
                         {
-                            score: '-1',
-                            className: 'green'
+                            score: this.letScore,
+                            className: this.letScore > 0 ? 'red' : 'green'
                         }
                     ],
                     con: [
@@ -78,17 +80,17 @@ export default {
                             showData: [
                                 {
                                     code: '胜',
-                                    sp: '1.23',
+                                    sp: this.spObj.TC_JZSPF['3'],
                                     isCurrent: false
                                 },
                                 {
                                     code: '平',
-                                    sp: '3.16',
+                                    sp: this.spObj.TC_JZSPF['1'],
                                     isCurrent: false
                                 },
                                 {
                                     code: '负',
-                                    sp: '2.00',
+                                    sp: this.spObj.TC_JZSPF['0'],
                                     isCurrent: false
                                 }
                             ]
@@ -98,17 +100,17 @@ export default {
                             showData: [
                                 {
                                     code: '胜',
-                                    sp: '1.23',
+                                    sp: this.spObj.TC_JZXSPF['3'],
                                     isCurrent: false
                                 },
                                 {
                                     code: '平',
-                                    sp: '3.16',
+                                    sp: this.spObj.TC_JZXSPF['1'],
                                     isCurrent: false
                                 },
                                 {
                                     code: '负',
-                                    sp: '2.00',
+                                    sp: this.spObj.TC_JZXSPF['0'],
                                     isCurrent: false
                                 }
                             ]

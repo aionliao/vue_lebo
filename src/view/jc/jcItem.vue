@@ -20,7 +20,8 @@
 				</div>
 			</i-col>
 			<i-col span="19">
-				<sp-con :clear="clear" @tzNum="tzNum"></sp-con>
+				<sp-con :clear="clear" @tzNum="tzNum" :spObj="spObj"
+					:letScore="this.matchList.letScore"></sp-con>
 			</i-col>
 		</row>
 	</div>
