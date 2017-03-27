@@ -14,6 +14,8 @@ function vueAjax (option) {
     let transactionType = option.data.transactionType;
     let gameNo = option.data.gameNo || option.data.lotteryNo;
 
+    console.log('发起请求的参数');
+    console.log(option);
     if (oneOf(transactionType, ['10103017', '10105002', '10105027'])) {
         transactionType = `${transactionType}_${gameNo}`;
     }
