@@ -15,7 +15,12 @@ var Message = function (options) {
 		};
 	}
 
+	let userOnClose = options.onClose;
 	let id = 'message_' + seed++;
+
+	options.onClose = function () {
+		Message.destory(id, userOnClose);
+	};
 
 	instance = new MessageConstructor({
 		data: options
