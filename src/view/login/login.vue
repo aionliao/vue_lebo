@@ -7,7 +7,9 @@
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<i-button type="radius">登录</i-button>
+				<div @click="">
+					<i-button type="radius">登录</i-button>
+				</div>
 			</conWrap>
 		</div>
 		<div class="login-btn-area">
