@@ -3,7 +3,7 @@
 		<iconDivLayout>
 			<icon :type="iconType" slot="left"></icon>
 			<template slot="right">
-				<i-input :type="inputType" :placeholder="placeholder"></i-input>
+				<i-input :type="inputType" :placeholder="placeholder" :value="value" @input="updateValue" :inputId="inputId"></i-input>
 			</template>
 		</iconDivLayout>
 	</div>
@@ -16,12 +16,20 @@
 		props: {
 			iconType: String,
 			inputType: String,
-			placeholder: String
+			placeholder: String,
+			value: [String, Number],
+			inputId: String
 		},
 		components: {
 			icon,
 			iInput,
 			iconDivLayout
+		},
+		methods: {
+			updateValue (value) {
+				console.log(value);
+				this.$emit('input', value);
+			}
 		}
 	};
 </script>
