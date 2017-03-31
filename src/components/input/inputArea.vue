@@ -3,33 +3,34 @@
 		<iconDivLayout>
 			<icon :type="iconType" slot="left"></icon>
 			<template slot="right">
-				<i-input :type="inputType" :placeholder="placeholder" :value="value" @input="updateValue" :inputId="inputId"></i-input>
+				<div :class="prefixCls">
+					<slot></slot>
+				</div>
 			</template>
+
 		</iconDivLayout>
 	</div>
 </template>
 <script>
+	import prefix from '../../config/prefix.js';
 	import icon from '../../components/icon/icon.vue';
 	import iInput from '../../components/input/input.vue';
 	import iconDivLayout from '../../components/layout/iconDivLayout.vue';
+
+	const prefixCls = `${prefix}-input`;
 	export default {
 		props: {
-			iconType: String,
-			inputType: String,
-			placeholder: String,
-			value: [String, Number],
-			inputId: String
+			iconType: String
 		},
 		components: {
 			icon,
 			iInput,
 			iconDivLayout
 		},
-		methods: {
-			updateValue (value) {
-				console.log(value);
-				this.$emit('input', value);
-			}
+		data () {
+			return {
+				prefixCls: prefixCls
+			};
 		}
 	};
 </script>
@@ -61,5 +62,12 @@
 	position: absolute;
 	.centerAll();
 }
-
+.@{css-prefix}-input input {
+	height: 30px;
+	line-height: 30px;
+	border: none;
+	width: 100%;
+	font-size: 14px;
+	color: @text-grap;
+}
 </style>

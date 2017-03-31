@@ -2,13 +2,16 @@
 	<section class="login">
 		<headerSimple link="/" title="登录"></headerSimple>
 		<div class="login-input-area">
-			<inputArea iconType="people" inputType="text" placeholder="输入手机号/用户名" :value="userNameVal" @input="updateUserName" ref="inputArea01"></inputArea>
-			<!-- <inputArea iconType="people" inputType="teder="输入手机号/用户名" :value="userNameVal" @input="updateUserName" ref="inputArea01"></inputArea> -->
-			<inputArea iconType="password" type="password" placeholder="输入您的密码" :value="passWordVal" @input="updatePassWordVal" ref="inputArea02"></inputArea>
+			<inputArea iconType="people">
+				<input type="text" placeholder="输入手机号/用户名" v-model="userNameVal" tag="用户名"  v-validate:userName.reg/>
+			</inputArea>
+			<inputArea iconType="password">
+				<input type="password" placeholder="输入您的密码" v-model="passWordVal"  tag="密码" v-validate:password.reg/>
+			</inputArea>
 		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<div @click="loginClick">
+				<div v-validate-check>
 					<i-button type="radius">登录</i-button>
 				</div>
 			</conWrap>
@@ -35,7 +38,7 @@
 	import iButton from '../../components/iButton/iButton.vue';
 	import conWrap from '../../components/conWrap/conWrap.vue';
 	import linkArea from '../../components/linkArea/linkArea.vue';
-	import validator from '../../public/validator.js';
+	import {validateDirective, validateCheckDirective} from '../../directive/v-validate';
 
 	export default {
 		components: {
@@ -45,36 +48,24 @@
 			conWrap,
 			linkArea
 		},
+		directives: {
+			validate: validateDirective,
+			validateCheck: validateCheckDirective
+		},
 		data () {
 			return {
 				userNameVal: '',
 				passWordVal: ''
 			};
 		},
-		mounted () {
-			console.log('create');
-			// console.log(this.$refs);
-			console.log(this.$refs.inputArea01.$children[0].$children[1].$el);
-			validator.add({
-				value: this.userNameVal,
-				rule: 'isNonEmpty',
-				errorMsg: '用化名不允许为空'
-			});
+		created () {
+			// this.VaConfig(type, typeVal, errMsg, name, tag)
 		},
 		methods: {
-			updateUserName (value) {
-				this.userNameVal = value;
-			},
-			updatePassWordVal (value) {
-				this.passWordVal = value;
-			},
-			loginClick () {
-				let msg = validator.start();
-				if (msg) {
-					this.$message({
-						message: msg
-					});
-				}
+			$validateSubmit () {
+				this.$message({
+					message: '登录成功'
+				});
 			}
 		}
 	};
