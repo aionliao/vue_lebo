@@ -3,10 +3,10 @@
 		<headerSimple link="/" title="登录"></headerSimple>
 		<div class="login-input-area">
 			<inputArea iconType="people">
-				<input type="text" placeholder="输入手机号/用户名" v-model="userNameVal" tag="用户名"  v-validate:userName.reg/>
+				<input type="text" placeholder="输入手机号/用户名" name="userName" regMsg="用户名4到16位" v-model="userNameVal" tag="用户名"  v-validate:userName/>
 			</inputArea>
 			<inputArea iconType="password">
-				<input type="password" placeholder="输入您的密码" v-model="passWordVal"  tag="密码" v-validate:password.reg/>
+				<input type="password" placeholder="输入您的密码" name="password" v-model="passWordVal"  tag="密码" v-validate:password/>
 			</inputArea>
 		</div>
 		<div class="login-btn-area">

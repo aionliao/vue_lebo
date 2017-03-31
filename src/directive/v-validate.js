@@ -68,12 +68,17 @@
 
 		res = cfg[type](v, typeVal);
 
+        console.log('res', res);
+        if (res) {
+            res = condi.errMsg || res;
+            break;
+        }
 		// 如果有自定义报错，返回自定义的报错信息
-		return res ? (condi.errMsg || res) : res;
 	}
+    return res;
  }
 
- function showErr (vm, name, checkResult) {
+ function showErr (name, checkResult) {
 	let type = checkResult[0];
 	let ext = checkResult[1] || [];
 	let ERR_MSG = {
@@ -83,9 +88,8 @@
 		unique: `${name}重复`
 	};
 
-	vm.$message({
-		message: ERR_MSG[type]
-	});
+    console.log(ERR_MSG[type]);
+	return ERR_MSG[type];
  }
 
  /**
@@ -183,8 +187,11 @@ let validateDirective = {
 				let _result = vm.vaResult[name];
 				if (_result) {
 					// 如果返回的是字符串，则为自定义报错，如果是数组，则使用 showErr 报错
-					typeof _result === 'string' ? _result : showErr(vm, conditions[0].tag, _result);
+					_result = typeof _result === 'string' ? _result : showErr(conditions[0].tag, _result);
 					el.value = vm.vaVal[name] = '';
+                    vm.$message({
+                        message: _result
+                    });
 					return;
 				}
 				vm.vaVal[name] = value;
@@ -243,13 +250,17 @@ let validateCheckDirective = {
 				let value = dom.value;
 				let conditions = vm.vaConfig[name];
 
+                console.log('conditions', conditions);
 				let _result = check(value, conditions);
 
 				// 如果返回不为0， 则有报错
 				if (_result) {
 					// 如果返回的是字符串，则为自定义报错；如果为数组，则使用showErr
-					typeof _result === 'string' ? _result : showErr(vm, conditions[0].tag, _result);
-					return;
+					_result = typeof _result === 'string' ? _result : showErr(conditions[0].tag, _result);
+                    vm.$message({
+                        message: _result
+                    });
+                    return;
 				}
 
 				vm.vaVal[name] = value;
