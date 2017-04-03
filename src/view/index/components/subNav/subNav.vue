@@ -25,7 +25,7 @@ export default {
 		return {
 			navs: [
 				{
-					linkUrl: '/login',
+					linkUrl: '/user/login',
 					imgUrl: './static/img/icon/icon-nav/icon-self.jpg',
 					insertHtml: '登录'
 				},

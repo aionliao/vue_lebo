@@ -1,23 +1,8 @@
 <template>
 	<section class="login">
-		<headerSimple link="back(-1)" title="注册">
+		<headerSimple link="back(-1)" title="忘记密码">
 			<headerIcon type="right-1" iconType="homefill"></headerIcon>
 		</headerSimple>
-		<div class="login-input-area">
-			<inputArea iconType="people">
-				<input type="text" placeholder="4-12个字符或下划线，不能全部为数字"
-					name="userName" regMsg="4-12个字符或下划线，不能全部为数字" v-model="userNameVal"
-					tag="用户名"  v-validate:userName/>
-			</inputArea>
-			<inputArea iconType="password">
-				<input type="password" placeholder="请输入6-16个字符" name="password"
-					v-model="passWordVal"  tag="密码" v-validate:password/>
-			</inputArea>
-			<inputArea iconType="password">
-				<input type="password" placeholder="请确认密码" name="passwordEqual"
-					v-model="passWordValEqual"  tag="密码" v-validate:password/>
-			</inputArea>
-		</div>
 		<div class="login-input-area">
 			<inputArea iconType="mobilefill">
 				<input type="tel" placeholder="请输入手机号" name="mobile"
@@ -28,9 +13,20 @@
 					v-model="smsCode"  tag="密码" v-validate:smsCode/>
 			</inputArea>
 		</div>
+		<div class="login-input-area">
+
+			<inputArea iconType="password">
+				<input type="password" placeholder="请输入6-16个字符" name="password"
+					v-model="passWordVal"  tag="密码" v-validate:password/>
+			</inputArea>
+			<inputArea iconType="password">
+				<input type="password" placeholder="请确认密码" name="passwordEqual"
+					v-model="passWordValEqual"  tag="密码" v-validate:password/>
+			</inputArea>
+		</div>
 		<div class="login-btn-area">
 			<conWrap>
-				<i-button type="radius" v-validate-check>注册</i-button>
+				<i-button type="radius" v-validate-check>重置密码</i-button>
 			</conWrap>
 		</div>
 		<linkArea></linkArea>

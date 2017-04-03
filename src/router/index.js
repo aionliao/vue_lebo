@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import index from '../view/index/index.vue';
 import login from '../view/user/login.vue';
 import register from '../view/user/register.vue';
+import forget from '../view/user/forget.vue';
 import activity from '../view/activity/activity.vue';
 import jc from '../view/jc/jc.vue';
 import more from '../view/more/more.vue';
@@ -24,7 +25,7 @@ export default new Router({
             component: index
         },
         {
-            path: '/login',
+            path: '/user/login',
             name: 'login',
             component: login
         },
@@ -54,9 +55,14 @@ export default new Router({
             component: sign
         },
         {
-            path: '/register',
+            path: '/user/register',
             name: 'register',
             component: register
+        },
+        {
+            path: '/user/forget',
+            name: 'forget',
+            component: forget
         },
         {
             path: '/kj',
