@@ -1,7 +1,9 @@
 <template>
 	<section class="login">
 		<headerSimple link="back(-1)" title="忘记密码">
-			<headerIcon type="right-1" iconType="homefill"></headerIcon>
+			<router-link to="/">
+				<headerIcon type="right-1" iconType="homefill"></headerIcon>
+			</router-link>
 		</headerSimple>
 		<div class="login-input-area">
 			<inputArea iconType="mobilefill">
